@@ -1,0 +1,115 @@
+<div id="root">
+  <div class="wrapper">
+    <header>
+      <div class="side"></div>
+      <h1>Word Game</h1>
+      <div class="side">
+        <button>
+          <span class="visually-hidden">View Information</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="game-wrapper">
+      <div class="guess-results">
+        <p class="guess">
+          <span class="cell">
+            <span class="character incorrect">R</span>
+          </span>
+          <span class="cell">
+            <span class="character misplaced">A</span>
+          </span>
+          <span class="cell">
+            <span class="character misplaced">T</span>
+          </span>
+          <span class="cell">
+            <span class="character incorrect">E</span>
+          </span>
+          <span class="cell">
+            <span class="character incorrect">S</span>
+          </span>
+        </p>
+        <p class="guess">
+          <span class="cell">
+            <span class="character correct">A</span>
+          </span>
+          <span class="cell">
+            <span class="character correct">B</span>
+          </span>
+          <span class="cell">
+            <span class="character correct">O</span>
+          </span>
+          <span class="cell">
+            <span class="character incorrect">V</span>
+          </span>
+          <span class="cell">
+            <span class="character incorrect">E</span>
+          </span>
+        </p>
+        <p class="guess">
+          <span class="cell">
+            <span class="character correct">A</span>
+          </span>
+          <span class="cell">
+            <span class="character correct">B</span>
+          </span>
+          <span class="cell">
+            <span class="character correct">O</span>
+          </span>
+          <span class="cell">
+            <span class="character correct">U</span>
+          </span>
+          <span class="cell">
+            <span class="character correct">T</span>
+          </span>
+        </p>
+        <p class="guess">
+          <span class="cell"></span>
+          <span class="cell"></span>
+          <span class="cell"></span>
+          <span class="cell"></span>
+          <span class="cell"></span>
+        </p>
+        <p class="guess">
+          <span class="cell"></span>
+          <span class="cell"></span>
+          <span class="cell"></span>
+          <span class="cell"></span>
+          <span class="cell"></span>
+        </p>
+        <p class="guess">
+          <span class="cell"></span>
+          <span class="cell"></span>
+          <span class="cell"></span>
+          <span class="cell"></span>
+          <span class="cell"></span>
+        </p>
+      </div>
+
+      <form class="guess-input-wrapper">
+        <label for="guess-input">Enter guess:</label>
+        <input required id="guess-input" type="text" />
+      </form>
+
+      <div class="happy banner">
+        <strong>Congratulations!</strong>
+        Got it in <strong>3</strong> guesses
+      </div>
+    </div>
+  </div>
+</div>
