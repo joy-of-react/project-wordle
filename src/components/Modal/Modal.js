@@ -4,7 +4,7 @@ import { X } from 'react-feather';
 
 import '@reach/dialog/styles.css';
 
-const Modal = ({ title, isOpen, handleDismiss, children }) => {
+function Modal({ title, isOpen, handleDismiss, children }) {
   return (
     <Dialog
       isOpen={isOpen}
@@ -19,6 +19,6 @@ const Modal = ({ title, isOpen, handleDismiss, children }) => {
       {children}
     </Dialog>
   );
-};
+}
 
 export default Modal;

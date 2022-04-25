@@ -80,7 +80,7 @@ h1 {
   padding: var(--game-spacing) 32px;
   margin: 0 auto;
   min-width: 250px;
-  max-width: min(500px, 60vh, 100%);
+  max-width: min(500px, 58vh, 100%);
 }
 
 .guess-results {
@@ -99,23 +99,12 @@ h1 {
 .cell {
   position: relative;
   width: 20%;
+  display: grid;
+  place-content: center;
   aspect-ratio: 1 / 1;
   border: 2px solid var(--color-gray-700);
   border-radius: var(--radius);
-  /* Trim corners of children */
-  overflow: hidden;
-}
-
-.character {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   font-size: 2rem;
-  display: grid;
-  place-content: center;
-  border-radius: var(--radius);
 }
 
 /*
@@ -135,16 +124,19 @@ h1 {
   --radius: 0px 0px 0px 4px;
 }
 
-.character.correct {
+.cell.correct {
   background: var(--color-success);
+  border-color: var(--color-success);
   color: white;
 }
-.character.incorrect {
+.cell.incorrect {
   background: var(--color-gray-300);
+  border-color: var(--color-gray-300);
   color: white;
 }
-.character.misplaced {
+.cell.misplaced {
   background: var(--color-warning);
+  border-color: var(--color-warning);
   color: white;
 }
 

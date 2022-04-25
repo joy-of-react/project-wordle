@@ -19,5 +19,3 @@ export function checkGuess(guess, answer) {
     };
   });
 }
-
-window.checkGuess = checkGuess;

@@ -3,7 +3,7 @@ import { HelpCircle } from 'react-feather';
 
 import Modal from '../Modal';
 
-const Header = () => {
+function Header() {
   const [showHelpDialog, setShowHelpDialog] = React.useState(false);
 
   return (
@@ -41,6 +41,6 @@ const Header = () => {
       </Modal>
     </header>
   );
-};
+}
 
 export default Header;

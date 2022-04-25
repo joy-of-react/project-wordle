@@ -1,7 +1,5 @@
 # Word Game
 
-TODO Josh: once I'm actually finished, save the .html file with a couple of guesses into a `docs` folder. Mention it here as a reference. Add HTML comments
-
 ## Joy of React, Project I
 
 In this project, we'll recreate a popular online word game, Wordle:
@@ -33,16 +31,16 @@ Your job in this first task is to create a `GuessInput` component. Here's the ro
 
 The text input should be bound to React state. And when the form is submitted, the value should be logged and reset:
 
-GIF
+<!-- GIF -->
 
 **Acceptance Criteria:**
 
 - Create a new `GuessInput` component.
-  - Don't forget, you can use an NPM script to generate the scaffolding for you!
-- This component should render a `<form>` tag with the class `"guess-input-wrapper"`.
-- It should render a text input, and that text input should be controlled by React state
+  - (Don't forget, you can use an NPM script to generate the scaffolding for you!)
+- This component should render a `<form>` tag, including a label and a text input.
+- The text input should be controlled by React state.
 - **The user's input should be converted to ALL UPPERCASE.** No lower-case letters allowed.
-- Using HTML validation, the input should have a minimum and maximum length of 5.
+- The input should have a minimum and maximum length of 5.
 - When the form is submitted:
   - The entered value should be logged to the console (for now)
   - The input should be reset to an empty string.
@@ -55,7 +53,7 @@ In a little while, we'll start thinking about the game-logic stuff, making sure 
 
 Our goal in this exercise is to render each of the user's guesses:
 
-GIF
+<!-- GIF -->
 
 Here's the DOM structure we hope to wind up with:
 
@@ -74,6 +72,7 @@ Here's the DOM structure we hope to wind up with:
 - `GuessResults` should receive the list of guesses, and map over them.
 - Create a new component, `Guess`. It should take a `children` prop, and render that children within a paragraph tag with the class `guess`.
 - Map over the guesses in `GuessResults`, and render a `Guess` component for each one.
+  - There should be no key warnings in the console!
 
 ## Exercise 3: Guess slots
 
@@ -138,7 +137,6 @@ There are two things that should help you tackle this exercise:
 
 - 6 `Guess` components should always be rendered, no matter how many guesses the user has made
 - The `Guess` component should render 5 spans, each with the class of `cell`.
-- Each `Guess` will render 5 spans, each with the class of `cell`.
 - Each cell should contain a letter, if the `Guess` instance has been given children. If not, the cell should be blank.
 - No `key` warnings in the console.
 
@@ -165,13 +163,17 @@ checkGuess('WHALE', 'LEARN');
 */
 ```
 
-The first two letters, `W` and `H`, don't appear in the word `LEARN`, and so they're marked as “incorrect”.
+There are 3 possible statuses:
 
-The letter `A` is in `LEARN`, and it occupies the same position in both words. It's marked as “correct”.
+- **correct** — this slot is perfect. It's the right letter in the right place.
+- **misplaced** — this letter does exist in the word, but in a different slot.
+- **incorrect** — this letter is not found in the word at all.
 
-The last two letters, `L` and `E`, are in both `WHALE` and `LEARN`, but not in the same position. And so they're marked as “misplaced”.
+In the example above, `W` and `H` aren't found in the word `LEARN`, and so they're marked as “incorrect”. `A` is correct, since it's in the 3rd slot in each word. The other two letters, `L` and `E`, are meant to be in other slots.
 
-Your task is to use this function to validate the user's guesses. The DOM output should look as follows:
+**These statuses correspond with CSS classes.** The `correct` status has a `correct` class name, which will apply the green background when applied to a cell. Same thing for `misplaced` and `incorrect`.
+
+Your task is to use this function to validate the user's guesses, and apply the correct CSS classes. The final output should look like this:
 
 ```html
 <div class="guess-results">
@@ -204,7 +206,10 @@ Here's the markup for the banners:
 ```html
 <!-- Happy banner -->
 <div class="banner happy">
-  <p><strong>Congratulations!</strong> Got it in 3 guesses.</p>
+  <p>
+    <strong>Congratulations!</strong> Got it in
+    <strong>3 guesses</strong>.
+  </p>
 </div>
 ```
 

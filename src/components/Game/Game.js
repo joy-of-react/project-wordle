@@ -8,8 +8,8 @@ const answer = sample(WORDS);
 // To make debugging easier, we'll log the solution in the console.
 console.info({ answer });
 
-const Game = () => {
+function Game() {
   return <>Put a game here!</>;
-};
+}
 
 export default Game;

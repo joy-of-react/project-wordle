@@ -1,7 +1,7 @@
 import Game from '../Game';
 import Header from '../Header';
 
-const App = () => {
+function App() {
   return (
     <div className="wrapper">
       <Header />
@@ -11,6 +11,6 @@ const App = () => {
       </div>
     </div>
   );
-};
+}
 
 export default App;
