@@ -8,7 +8,13 @@ In this project, we'll recreate a popular online word game, Wordle:
 
 In Wordle, users have 6 attempts to guess a 5-letter word. You're helped along the way by ruling out letters that aren't in the word, and being told whether the correct letters are in the correct location or not.
 
-**Many instructions for running this project are included in the course.** Be sure to read the instructions carefully on the course platform before continuing! TODO: Link to instructions
+## Getting Started
+
+This project is created with create-react-app. It's intended to be run locally, on your computer, using Node.js and NPM.
+
+If you're not sure how to run a local development server, check out the [Project Introduction](https://courses.joshwcomeau.com/joy-of-react/02-wordle). It includes all the info you need to know.
+
+This workshop is split into **5 exercises.** Each exercise has its own solution video on the course platform.
 
 ## Exercise 1: GuessInput
 
@@ -18,9 +24,9 @@ In the standard Wordle game, a global event listener registers keypresses. This 
 
 At the bottom of the page, we'll render a little form that holds a text input:
 
-IMAGE
+![Screenshot showing the guess input UI](docs/guess-input.png)
 
-Your job in this first task is to create a `GuessInput` component. Here's the rough shape that the HTML should take:
+Your job in this first exercise is to create a new component for this UI, and render it inside the `Game` component.
 
 ```html
 <form class="guess-input-wrapper">
