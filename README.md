@@ -14,7 +14,11 @@ This project is created with create-react-app. It's intended to be run locally, 
 
 If you're not sure how to run a local development server, check out the [Project Introduction](https://courses.joshwcomeau.com/joy-of-react/02-wordle). It includes all the info you need to know.
 
-This workshop is split into **5 exercises.** Each exercise has its own solution video on the course platform.
+> **NOTE: This project is tricky!**
+>
+> This project is meant to be challenging, because I believe that the best way to learn is to be challenged. Depending on your experience level, though, you may feel like it's unreasonably difficult.
+>
+> This workshop is split into 5 exercises, and each exercise has a solution video. If you spend more than 10 minutes stuck on an exercise, I encourage you to **watch the solution.** If things are still unclear after that, please ask questions in the Discord community!
 
 ## Exercise 1: GuessInput
 
@@ -22,11 +26,13 @@ First thing’s first: we need a way to submit guesses!
 
 In the standard Wordle game, a global event listener registers keypresses. This isn't very accessible, and so we're going to do things a little bit differently.
 
-At the bottom of the page, we'll render a little form that holds a text input:
+We'll render a little form that holds a text input:
 
 ![Screenshot showing the guess input UI](docs/guess-input.png)
 
 Your job in this first exercise is to create a new component for this UI, and render it inside the `Game` component.
+
+Here's a minimal representation of the markup expected to be produced by this new component:
 
 ```html
 <form class="guess-input-wrapper">
@@ -35,13 +41,15 @@ Your job in this first exercise is to create a new component for this UI, and re
 </form>
 ```
 
-The text input should be bound to React state. And when the form is submitted, the value should be logged and reset:
+**NOTE:** This is the _minimal_ markup required, for the styles to be applied and for accessibility. **It isn't set in stone!** Feel free to make tweaks in order to match all of the acceptance criteria below.
 
-<!-- GIF -->
+Here's a quick screen recording of the expected result:
+
+![Screen recording showing the guess being entered. It gets logged to the console, and erased from the input](docs/submit-guess.gif)
 
 **Acceptance Criteria:**
 
-- Create a new `GuessInput` component.
+- Create a new component.
   - (Don't forget, you can use an NPM script to generate the scaffolding for you!)
 - This component should render a `<form>` tag, including a label and a text input.
 - The text input should be controlled by React state.
@@ -53,15 +61,15 @@ The text input should be bound to React state. And when the form is submitted, t
 
 ## Exercise 2: Keeping track of guesses
 
-When the user submits their guess, that value is being obliterated. Instead, we should be storing that guess, and displaying it to the user!
+Instead of obliterating the user's guess, let's add it to a list, so we can show the user all of their previously-submitted guesses!
 
-In a little while, we'll start thinking about the game-logic stuff, making sure each letter is the right color. For now, though, we want to set up some of the scaffolding, getting some of the component / DOM structure in place.
+For now, we aren't worrying about any game-logic stuff. We're still setting up the scaffolding, getting some of the component + DOM structure in place.
 
 Our goal in this exercise is to render each of the user's guesses:
 
-<!-- GIF -->
+![Screen recording showing each guess printed out above the text input from the last exercise](docs/printed-word-list.gif)
 
-Here's the DOM structure we hope to wind up with:
+And here's an example of the expected DOM structure:
 
 ```html
 <div class="guess-results">
@@ -72,21 +80,21 @@ Here's the DOM structure we hope to wind up with:
 
 **Acceptance Criteria:**
 
-- Create a new piece of state, `guesses`. It should start life as an empty array. It's up to you to decide where this bit of state lives.
-- When the user submits the `GuessInput` form, the user's guess should be pushed into this array.
-- We'll want to create a new component to hold the list of user guesses. Call it `GuessResults`. It should have a top-level element with the class `guess-results`.
-- `GuessResults` should receive the list of guesses, and map over them.
-- Create a new component, `Guess`. It should take a `children` prop, and render that children within a paragraph tag with the class `guess`.
-- Map over the guesses in `GuessResults`, and render a `Guess` component for each one.
-  - There should be no key warnings in the console!
+- A new component should be created, to render previous guesses.
+- When the user submits their guess, that value should be rendered within this new component.
+- There should be no key warnings in the console!
 
 ## Exercise 3: Guess slots
 
-Alright, so things are starting to shape up. There's a bit of an issue though.
+In the real Wordle game, the initial screen shows 6 rows of 5 squares:
 
-The final version of our _Wordle_ clone should display 6 guesses at all times. Each guess should show 5 “cells”. And when a guess is entered, the letters are animated within these cells:
+![Screenshot of real Wordle, showing a 5x6 grid](docs/wordle-squares.png)
 
-GIF
+In this exercise, we'll update our code to display a similar grid. We'll show 6 rows of guesses, no matter how many guesses the user has submitted, and each row will consist of 5 cells.
+
+As the user submits guesses, their guess will populate the cells:
+
+![Screen recording showing each guess being added to the 5x6 grid](docs/words-in-cells.gif)
 
 We need to update our DOM structure for the `GuessResults` component so that it looks something like this:
 
@@ -130,8 +138,6 @@ We need to update our DOM structure for the `GuessResults` component so that it 
 </div>
 ```
 
-This structure might seem overly complex, but it's necessary to allow us to color each square accordingly. We'll tackle that bit in the next exercise.
-
 **Things to know:**
 
 There are two things that should help you tackle this exercise:
@@ -141,14 +147,19 @@ There are two things that should help you tackle this exercise:
 
 **Acceptance Criteria:**
 
-- 6 `Guess` components should always be rendered, no matter how many guesses the user has made
+- Create a new `Guess` component. 6 instances should be rendered at all times, no matter how many guesses have been submitted.
 - The `Guess` component should render 5 spans, each with the class of `cell`.
 - Each cell should contain a letter, if the `Guess` instance has been given children. If not, the cell should be blank.
+- Use the `NUM_OF_GUESSES_ALLOWED` constant, when needed.
 - No `key` warnings in the console.
 
 ## Exercise 4: Game logic
 
-Alright, let's make this an actual game!
+Alright: over the first 3 exercises, we've been setting up all of the structure and scaffolding. It's time to do some game-logic stuff!
+
+In this exercise, we'll add some CSS classes to color the background of each cell, based on the results and the correct answer:
+
+![Screen recording. The guesses are applied to the game board, and the background colors update accordingly](docs/words-with-backgrounds.gif)
 
 Inside `/src/game-helpers.js`, you'll find a helper function, `checkGuess`. As parameters, it takes a single guess, as well as the correct answer. It returns an array that contains the status for each letter.
 
@@ -179,39 +190,40 @@ In the example above, `W` and `H` aren't found in the word `LEARN`, and so they'
 
 **These statuses correspond with CSS classes.** The `correct` status has a `correct` class name, which will apply the green background when applied to a cell. Same thing for `misplaced` and `incorrect`.
 
-Your task is to use this function to validate the user's guesses, and apply the correct CSS classes. The final output should look like this:
+Your task is to use this function to validate the user's guesses, and apply the correct CSS classes. The final output for a given guess should look like this:
 
 ```html
-<div class="guess-results">
-  <p class="guess">
-    <span class="cell incorrect">W</span>
-    <span class="cell incorrect">H</span>
-    <span class="cell correct">A</span>
-    <span class="cell misplaced">L</span>
-    <span class="cell misplaced">E</span>
-  </p>
-  <!-- Omitted 5 remaining guesses for brevity -->
-</div>
+<p class="guess">
+  <span class="cell incorrect">W</span>
+  <span class="cell incorrect">H</span>
+  <span class="cell correct">A</span>
+  <span class="cell misplaced">L</span>
+  <span class="cell misplaced">E</span>
+</p>
 ```
 
 **Acceptance Criteria:**
 
 - Import the `checkGuess` function from `/src/game-helpers.js`, and use it to validate each of the user's guesses
 - When rendering the letters in the `Guess` component, apply the letter's `status` to the `cell` element.
+- "Empty" guess slots should have the same markup as before: `<span class="cell"></span>`.
 
 ## Exercise 5: winning and losing
 
-Right now, our Wordle clone never ends, no matter what the user does. Let's change that!
+We're so close! We only have one concern left: ending the game.
 
-If the user guesses the correct word (as in, all 5 letters have the status `correct`), the game should end, and a congratulatory banner should be shown.
+If the user wins the game, a happy banner should be shown:
 
-If the user submits a 6th guess and still hasn't hit the word, the game should end, and a sad failure banner should be shown.
+![Screenshot of a won game, showing a green success banner](docs/happy-banner.png)
 
-Here's the markup for the banners:
+If the user loses the game, by contrast, a sad banner should be shown:
+
+![Screenshot of a won game, showing a red failure banner](docs/sad-banner.png)
+
+The user wins the game when their guessed word is identical to the `answer`. They lose the game if they submit 6 guesses without winning.
 
 ```html
-<!-- Happy banner -->
-<div class="banner happy">
+<div class="happy banner">
   <p>
     <strong>Congratulations!</strong> Got it in
     <strong>3 guesses</strong>.
@@ -220,20 +232,18 @@ Here's the markup for the banners:
 ```
 
 ```html
-<!-- Sad banner -->
-<div class="banner sad">
+<div class="sad banner">
   <p>Sorry, the correct answer is <strong>LEARN</strong>.</p>
 </div>
 ```
 
+When the game is over, one of these banners should be shown, and the text input should be disabled so that no new guesses can be typed or submitted.
+
 **Acceptance Criteria:**
 
-- Add a new bit of state that tracks the game status. Possible values are `running`, `won`, and `lost`.
+- If the user wins the game, a happy banner should be shown.
+- If the user loses the game, a sad banner should be shown
 - When the game is over, the text input should be disabled.
-- The game status should flip to `won` when they correctly identify the word.
-- The game status should flip to `lost` after submitting the last word without success.
-- When the game status is `won`, render the happy banner.
-- When the game status is `lost`, render the sad banner.
 - It's up to you to decide how to structure the banner! Feel free to create new component(s) if you think it's warranted.
 
 ---
@@ -242,7 +252,7 @@ Here's the markup for the banners:
 
 If you're looking for an additional challenge, give these stretch goals a shot!
 
-Unlike the standard exercises, solutions aren't provided for these goals.
+Unlike the standard exercises, no solution video is available for these goals, though the raw solution source code is available. See the solutions page on the Course Platform.
 
 Also, feel free to come up with _your own_ stretch goals! If there's a thing you'd like to implement, go for it!!
 
@@ -250,9 +260,17 @@ Also, feel free to come up with _your own_ stretch goals! If there's a thing you
 
 In the real Wordle game, a keyboard is shown below the guesses:
 
-![Screenshot of the Wordle game, showing a keyboard below the game board](docs/bottom-keyboard.png)
+![Screenshot of the Wordle game, showing a keyboard below the game board](docs/bottom-keyboard-original.png)
 
 This keyboard is an important game element, since it makes it easy to tell which letters have already been tested.
+
+Here's what the keyboard looked like in my implementation:
+
+![Screenshot of our Wordle clone, showing a keyboard below the game board](docs/bottom-keyboard-clone.png)
+
+**Note: Styling isn't provided for stretch goals.** You'll need to come up with your own CSS. You can add it to `src/styles.css`.
+
+**Relatedly:** When you add a keyboard, it'll likely be pushed "below the fold" on smaller windows. Don't worry about trying to fit everything in the viewport at once.
 
 **Acceptance Criteria:**
 
@@ -273,18 +291,9 @@ In our clone, we aren't picking a new word every day, we're picking a new word w
 
 Update the game so that it can be restarted. Add a "Restart game" button to the banner shown when the user wins or loses.
 
-Currently, the correct word is determined in `Game.js`, outside the component:
-
-```js
-// Pick a random word on every pageload.
-const answer = sample(WORDS);
-// To make debugging easier, we'll log the solution in the console.
-console.info({ answer });
-```
-
-You'll need to change this, so that it happens within the React component.
+This will require moving the `answer` into state. You may wish to revisit the lesson on “Lazy Initialization” from Module 2!
 
 **Acceptance Criteria:**
 
-- A "Restart Game" button is shown at the end of the game. You can put this button in the `GameOverBanner`, or wherever else you'd like
-- Clicking the button should select a new correct word and erase all of the user's guesses.
+- A "Restart Game" button is shown at the end of the game. You can put this button in the `GameOverBanner`, or wherever else you'd like!
+- Clicking the button should select a new correct word and reset all other state.
