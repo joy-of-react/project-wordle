@@ -4,13 +4,13 @@
   "private": true,
   "author": "Josh Comeau <me@joshwcomeau.com>",
   "dependencies": {
-    "@reach/dialog": "0.16.2",
+    "@reach/dialog": "0.17.0",
     "new-component": "4.0.0",
     "prettier": "^2.6.2",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-feather": "2.0.9",
-    "react-scripts": "5.0.0"
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
