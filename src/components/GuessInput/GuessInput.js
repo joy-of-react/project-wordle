@@ -5,6 +5,7 @@ function GuessInput() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (guess.length !== 5) return;
     console.log({ guess });
     setGuess("");
   }
@@ -13,9 +14,11 @@ function GuessInput() {
       <label htmlFor="guess-input">Enter Guess:</label>
       <input
         id="guess-input"
+        required
+        maxLength={5}
         type="text"
         value={guess}
-        onChange={(e) => setGuess(e.target.value)}
+        onChange={(e) => setGuess(e.target.value.toUpperCase())}
       />
     </form>
   );
