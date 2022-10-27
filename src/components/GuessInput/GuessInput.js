@@ -7,6 +7,7 @@ function GuessInput({ setGuesses }) {
     e.preventDefault();
     if (guess.length !== 5) return;
     console.log({ guess });
+    setGuesses((prevState) => [...prevState, guess]);
     setGuess("");
   }
   return (
