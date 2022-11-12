@@ -11,7 +11,7 @@ function GuessInput() {
       return;
     };
 
-    console.log(guess.toUpperCase());
+    console.log({ guess });
     setGuess("");
   };
 
@@ -22,10 +22,15 @@ function GuessInput() {
     >
       <label htmlFor="guess-input">Enter guess:</label>
       <input 
+        required
         id="guess-input" 
         type="text" 
-        value={guess.toUpperCase()} 
-        onChange={(event) => setGuess(event.target.value)}
+        value={guess} 
+        onChange={(event) => {
+          const nextGuess = event.target.value.toUpperCase();
+          setGuess(nextGuess);
+        }}
+        minLength={5}
         maxLength={5}
       />
     </form>
