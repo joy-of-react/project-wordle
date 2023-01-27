@@ -15,6 +15,7 @@ function GuessInput({ handleGuessSent }) {
     if (guessValue.length !== 5) return;
 
     handleGuessSent(guessValue);
+    setGuessValue("");
   }
   return (
     <form onSubmit={handleSubmit}>
