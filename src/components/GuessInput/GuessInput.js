@@ -1,6 +1,6 @@
 import React from 'react';
 
-function GuessInput({ previousGuesses, setPreviousGuesses }) {
+function GuessInput({ guessResults, setGuessResults }) {
   const [guess, setGuess] = React.useState('');
   function handleSubmit(event) {
     event.preventDefault();
@@ -10,9 +10,9 @@ function GuessInput({ previousGuesses, setPreviousGuesses }) {
     }
     console.log({ guess });
     // add guess to previous guesses
-    const nextGuess = { id: Math.ceil(Math.random() * 100), value: guess };
-    const nextPreviousGusses = [...previousGuesses, nextGuess];
-    setPreviousGuesses(nextPreviousGusses);
+    const nextGuess = { id: Math.ceil(Math.random() * 1000), value: guess };
+    const nextPreviousGusses = [...guessResults, nextGuess];
+    setGuessResults(nextPreviousGusses);
     setGuess('');
   }
   return (
