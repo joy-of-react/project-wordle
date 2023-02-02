@@ -3,8 +3,9 @@ import { checkGuess } from '../../game-helpers';
 
 import { range } from '../../utils';
 
-function Cell(){
-  
+function Cell({ letter, status }) {
+  const className = status ? letter : 'cell';
+  return <span className={className}>{letter}</span>;
 }
 
 function Guess({ value, answer }) {
@@ -13,9 +14,11 @@ function Guess({ value, answer }) {
   return (
     <p className='guess'>
       {range(5).map((num) => (
-        <span key={num} className={`cell ${result ? result[num].status : undefined}`}>
-          {result ? result[num].letter : undefined}
-        </span>
+        <Cell
+          key={num}
+          letter={result ? result[num].letter : undefined}
+          status={result ? result[num].status : undefined}
+        />
       ))}
     </p>
   );
