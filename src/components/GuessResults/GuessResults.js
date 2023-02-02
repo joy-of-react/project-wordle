@@ -4,7 +4,6 @@ import { range } from '../../utils';
 import Guess from '../Guess';
 
 function GuessResults({ guesses, answer }) {
-  console.log(guesses);
   return (
     <div className='guess-results'>
       {range(NUM_OF_GUESSES_ALLOWED).map((num) => (
