@@ -11,6 +11,7 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
+  console.log(`In Game - ${answer}`);
   const [guesses, setGuesses] = React.useState([]);
 
   function handleSubmitGuess(tentativeGuess) {
@@ -20,7 +21,7 @@ function Game() {
 
   return (
     <>
-      <GuessResults guesses={guesses} />
+      <GuessResults guesses={guesses} answer={answer} />
       <GuessInput handleSubmitGuess={handleSubmitGuess} />
     </>
   );
