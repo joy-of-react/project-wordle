@@ -1,15 +1,15 @@
 import React from "react";
 import { range } from "../../utils";
 
-function Guess({ guess = "GUESS" }) {
-  const defaultGuess = range(0, 5).map((el) => "");
-  const guessArr = guess === "" ? defaultGuess : guess.split("");
-
+function Guess({ value, checked }) {
   return (
     <p className="guess">
-      {guessArr.map((char, idx) => (
-        <span key={idx} className="cell">
-          {char}
+      {range(5).map((num) => (
+        <span
+          key={num}
+          className={checked === null ? "cell" : `cell ${checked[num].status}`}
+        >
+          {value ? value[num] : undefined}
         </span>
       ))}
     </p>
