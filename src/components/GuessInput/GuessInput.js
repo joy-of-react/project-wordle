@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 
 function GuessInput({
-  currentGuess,
   guessList,
-  setCurrentGuess,
   setGuessList,
 }) {
   const [guess, setGuess] = useState("");
@@ -14,10 +11,7 @@ function GuessInput({
       className="guess-input-wrapper"
       onSubmit={(event) => {
         event.preventDefault();
-        const newGuessList = [...guessList];
-        newGuessList[currentGuess] = guess;
-        setCurrentGuess(currentGuess + 1);
-        setGuessList(newGuessList);
+        setGuessList([...guessList, guess]);
         setGuess("");
       }}
     >
@@ -29,7 +23,6 @@ function GuessInput({
           value={guess}
           pattern="[a-zA-Z]{5}"
           title="5 letter guess"
-          disabled={currentGuess === NUM_OF_GUESSES_ALLOWED}
           required
           onChange={(event) => setGuess(event.target.value.toUpperCase())}
         />
