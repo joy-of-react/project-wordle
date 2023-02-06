@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function GuessInput() {
+function GuessInput({ guessList, setGuessList }) {
   const [guess, setGuess] = useState("");
 
   return (
@@ -9,6 +9,7 @@ function GuessInput() {
       onSubmit={(event) => {
         event.preventDefault();
         console.log(guess);
+        setGuessList([...guessList, guess]);
         setGuess("");
       }}
     >
@@ -18,8 +19,8 @@ function GuessInput() {
           id="guess-input"
           type="text"
           value={guess}
-          minLength="5"
-          maxLength="5"
+          pattern="[a-zA-Z]{5}"
+          title="5 letter guess"
           required
           onChange={(event) => setGuess(event.target.value.toUpperCase())}
         />
