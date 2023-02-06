@@ -1,13 +1,8 @@
-import React from 'react'
+import React from 'react';
 
-
-
-function GuessInput({handleSubmit, handleChange, guess}) {
-
+function GuessInput({ handleSubmit, handleChange, guess }) {
   return (
-    <form
-      onSubmit={handleSubmit}
-    >
+    <form onSubmit={handleSubmit}>
       <label htmlFor="guess-input">Enter guess:</label>
       <input
         id="guess-input"
@@ -17,7 +12,7 @@ function GuessInput({handleSubmit, handleChange, guess}) {
         onChange={handleChange}
       />
     </form>
-  )
+  );
 }
 
-export default GuessInput
+export default GuessInput;
