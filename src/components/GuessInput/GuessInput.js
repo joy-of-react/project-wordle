@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 
-function GuessInput({
-  guessList,
-  setGuessList,
-}) {
+function GuessInput({ disabled, guessList, setGuessList }) {
   const [guess, setGuess] = useState("");
 
   return (
@@ -25,6 +22,7 @@ function GuessInput({
           title="5 letter guess"
           required
           onChange={(event) => setGuess(event.target.value.toUpperCase())}
+          disabled={disabled}
         />
       </label>
     </form>
