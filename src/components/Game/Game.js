@@ -19,13 +19,9 @@ function Game() {
 
   return (
     <>
-      Guess List:
-      <Attempts attempts={attempts} />
-      With Logic:
-      <GuessResults attempts={attempts} />
 
-      {/*<p>Template:</p>*/}
-      {/*<GuessResults />*/}
+      <GuessResults attempts={attempts} answer={answer} />
+
       <Input attempts={attempts} setAttempts={setAttempts} />
     </>
   );
