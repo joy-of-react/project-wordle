@@ -19,8 +19,13 @@ function Game() {
 
   return (
     <>
-      {/*<Attempts attempts={attempts} />*/}
-      <GuessResults />
+      Guess List:
+      <Attempts attempts={attempts} />
+      With Logic:
+      <GuessResults attempts={attempts} />
+
+      {/*<p>Template:</p>*/}
+      {/*<GuessResults />*/}
       <Input attempts={attempts} setAttempts={setAttempts} />
     </>
   );
