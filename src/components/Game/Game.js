@@ -32,7 +32,11 @@ function Game() {
              setHasFinishedGame={setHasFinishedGame} answer={answer} maxGuesses={NUM_OF_GUESSES_ALLOWED} />
       {/*<Banner hasFinishedGame={hasFinishedGame} hasWon={hasWon} />*/}
       {/*displayBanner(hasFinishedGame)*/}
-      {hasFinishedGame && <Banner hasFinishedGame={hasFinishedGame} hasWon={hasWon} />}
+      {hasFinishedGame &&
+        <Banner hasFinishedGame={hasFinishedGame}
+                hasWon={hasWon}
+                attempts={attempts}
+                answer={answer} />}
     </>
   );
 }

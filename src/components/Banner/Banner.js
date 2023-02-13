@@ -1,14 +1,14 @@
 import React from "react";
 
-function Banner({ hasFinishedGame, hasWon }) {
+function Banner({ hasFinishedGame, hasWon, attempts, answer }) {
 
   const displayBanner = (hasFinishedGame, hasWon) => {
     if (hasFinishedGame && hasWon) {
       return (
         <div className="happy banner">
           <p>
-            <strong>Congratulations!</strong> Got it in
-            <strong>3 guesses</strong>.
+            <strong>Congratulations!</strong> Got it in{" "}
+            <strong>{attempts.length} guesses</strong>.
           </p>
         </div>
       );
@@ -16,7 +16,7 @@ function Banner({ hasFinishedGame, hasWon }) {
     if (hasFinishedGame && !hasWon) {
       return (
         <div className="sad banner">
-          <p>Sorry, the correct answer is <strong>LEARN</strong>.</p>
+          <p>Sorry, the correct answer is <strong>{answer}</strong>.</p>
         </div>
       );
     }
