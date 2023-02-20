@@ -18,6 +18,7 @@ function GuessInput() {
       onChange={(e) => {
         setGuess(e.target.value.toUpperCase())
       }}
+      title="Must be exactly 5 characters long and letters only"
       pattern="[A-Z]{5}"
       value={guess}
       id="guess-input" type="text" />
