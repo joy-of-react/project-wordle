@@ -10,6 +10,7 @@ function GuessInput() {
       onSubmit={(e) => {
         e.preventDefault();
         console.log(`Guess is ${guess}`);
+        setGuess("");
       }}
     >
     <label for="guess-input">Enter guess:</label>
@@ -17,6 +18,7 @@ function GuessInput() {
       onChange={(e) => {
         setGuess(e.target.value.toUpperCase())
       }}
+      pattern="[A-Z]{5}"
       value={guess}
       id="guess-input" type="text" />
   </form>;
