@@ -9,7 +9,7 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-  return <>Put a game here!</>;
+  return <div>Put a game here!</div>;
 }
 
 export default Game;
