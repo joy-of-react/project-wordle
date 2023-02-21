@@ -292,7 +292,7 @@ In our clone, we aren't picking a new word every day, we're picking a new word w
 
 Update the game so that it can be restarted. Add a "Restart game" button to the banner shown when the user wins or loses.
 
-This will require moving the `answer` into state. You may wish to revisit the lesson on “Lazy Initialization” from Module 2!
+_HINT:_ This will require moving the `answer` into state. You'll want to do the random word selection inside a callback function, the secondary way to initialize state described here: https://courses.joshwcomeau.com/joy-of-react/02-state/03-use-state#initial-value
 
 **Acceptance Criteria:**
 
