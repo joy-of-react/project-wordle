@@ -8,6 +8,7 @@ import GuessResults from '../GuessResults';
 import WonBanner from '../WonBanner';
 import LostBanner from '../LostBanner';
 
+// Lock to a single answer, for easier demonstrations.
 const answer = 'WORKS';
 console.info({ answer });
 
@@ -21,6 +22,7 @@ function Game() {
 
   function handleSubmitGuess(tentativeGuess) {
     const result = checkGuess(tentativeGuess, answer);
+
     const nextGuesses = [...guesses, result];
     setGuesses(nextGuesses);
 
