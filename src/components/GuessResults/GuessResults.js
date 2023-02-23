@@ -1,13 +1,13 @@
-import React from 'react'
-import { range } from '../../utils'
+import React from "react";
+import { range } from "../../utils";
 
 function GuessResults({ submittedGuesses }) {
-  const arrayToMapOver = range(0, 6)
+  const arrayToMapOver = range(0, 6);
 
   return (
     <div class="guess-results">
       {arrayToMapOver.map((_, index) => (
-        <p class="guess" key={submittedGuesses[index]?.id}>
+        <p class="guess" key={index}>
           <span class="cell">{submittedGuesses[index]?.guess[0]}</span>
           <span class="cell">{submittedGuesses[index]?.guess[1]}</span>
           <span class="cell">{submittedGuesses[index]?.guess[2]}</span>
@@ -16,7 +16,7 @@ function GuessResults({ submittedGuesses }) {
         </p>
       ))}
     </div>
-  )
+  );
 }
 
-export default GuessResults
+export default GuessResults;
