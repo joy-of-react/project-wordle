@@ -1,19 +1,18 @@
 import React from "react";
 import { range } from "../../utils";
+import Guess from "../Guess/Guess";
 
-function GuessResults({ submittedGuesses }) {
+function GuessResults({ submittedGuesses, answer }) {
   const arrayToMapOver = range(0, 6);
 
   return (
     <div class="guess-results">
       {arrayToMapOver.map((_, index) => (
-        <p class="guess" key={index}>
-          <span class="cell">{submittedGuesses[index]?.guess[0]}</span>
-          <span class="cell">{submittedGuesses[index]?.guess[1]}</span>
-          <span class="cell">{submittedGuesses[index]?.guess[2]}</span>
-          <span class="cell">{submittedGuesses[index]?.guess[3]}</span>
-          <span class="cell">{submittedGuesses[index]?.guess[4]}</span>
-        </p>
+        <Guess
+          answer={answer}
+          submittedGuesses={submittedGuesses[index]}
+          key={index}
+        />
       ))}
     </div>
   );
