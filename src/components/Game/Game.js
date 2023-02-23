@@ -2,6 +2,7 @@ import React from 'react';
 
 import { sample } from '../../utils';
 import { WORDS } from '../../data';
+import { checkGuess } from '../../game-helpers';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
 
 import GuessInput from '../GuessInput';
@@ -20,8 +21,11 @@ function Game() {
 
   const [guesses, setGuesses] = React.useState([]);
 
+  console.log(guesses);
+
   function handleSubmitGuess(tentativeGuess) {
-    const nextGuesses = [...guesses, tentativeGuess];
+    const result = checkGuess(tentativeGuess, answer);
+    const nextGuesses = [...guesses, result];
     setGuesses(nextGuesses);
 
     if (tentativeGuess.toUpperCase() === answer) {
