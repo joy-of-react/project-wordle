@@ -16,7 +16,7 @@ function GuessResults({ guessList }) {
           )
         )}
       </div>
-      <p>something</p>
+      <p>something else here</p>
     </>
   );
 }
