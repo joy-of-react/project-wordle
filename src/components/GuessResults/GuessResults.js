@@ -12,6 +12,7 @@ function GuessResults({ guessList }) {
           <Guess guess={guessList[num]} key={num} />
         ))}
       </div>
+      <p>this is a test</p>
     </>
   );
 }
