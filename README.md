@@ -51,14 +51,20 @@ Here's a quick screen recording of the expected result:
 
 - Create a new component.
   - (Don't forget, you can use an NPM script to generate the scaffolding for you!)
-- This component should render a `<form>` tag, including a label and a text input.
+    - [x]
+- This component should render a `<form>` tag, including a label and a text input. -[x]
 - The text input should be controlled by React state.
+  - [x]
 - When the form is submitted:
   - The entered value should be logged to the console (for now).
+    - [x]
   - The input should be reset to an empty string.
+    - [x]
 - **The user's input should be converted to ALL UPPERCASE.** No lower-case letters allowed.
+  - [x]
 - The input should have a minimum and maximum length of 5.
   - **NOTE:** The `minLength` validator is a bit funky; you may wish to use the `pattern` attribute instead. This is discussed in more detail on the [Solution page](https://courses.joshwcomeau.com/joy-of-react/project-wordle/06-solution#an-alternative-to-minlength).
+    - [x]
 
 ## Exercise 2: Keeping track of guesses
 
@@ -225,10 +231,7 @@ The user wins the game when their guessed word is identical to the `answer`. The
 
 ```html
 <div class="happy banner">
-  <p>
-    <strong>Congratulations!</strong> Got it in
-    <strong>3 guesses</strong>.
-  </p>
+  <p><strong>Congratulations!</strong> Got it in <strong>3 guesses</strong>.</p>
 </div>
 ```
 
