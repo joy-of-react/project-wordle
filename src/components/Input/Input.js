@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 
-function Input({ guesses, setGuesses }) {
+import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
+
+function Input({ guesses, setGuesses, numGuesses, setNumGuesses }) {
   const [guess, setGuess] = useState('');
   function handleOnSubmit(e) {
     e.preventDefault();
     console.log('guess: ', { guess });
-    const newGuesses = [...guesses, guess];
+    if (numGuesses === NUM_OF_GUESSES_ALLOWED) { 
+      return alert(`Already made ${NUM_OF_GUESSES_ALLOWED} guesses`);
+    }
+    const newGuesses = [...guesses];
+    const newNumGuesses = numGuesses + 1;
+    newGuesses[numGuesses] = guess;
     setGuesses(newGuesses);
+    setNumGuesses(newNumGuesses);
     setGuess('');
   }
   return (
@@ -20,6 +28,7 @@ function Input({ guesses, setGuesses }) {
         value={guess}
         onChange={(e) => setGuess((e.target.value).toUpperCase())}
         pattern="[A-Z]{5}"
+        maxLength={5}
       />
     </form>
   );

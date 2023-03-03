@@ -105,6 +105,7 @@ h1 {
   border: 2px solid var(--color-gray-700);
   border-radius: var(--radius);
   font-size: 2rem;
+  line-height: normal;
 }
 
 /*
