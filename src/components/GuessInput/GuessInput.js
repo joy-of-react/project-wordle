@@ -1,15 +1,15 @@
 import React from 'react';
 
-function Form() {
-  const [value, setValue] = React.useState('');
+function GuessInput() {
+  const [guess, setGuess] = React.useState('');
   const handleChange = (event) => {
-    setValue(event.target.value.toUpperCase());
+    setGuess(event.target.value.toUpperCase());
   };
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log(value);
-    setValue('');
+    console.log(guess);
+    setGuess('');
   };
 
   return (
@@ -18,7 +18,7 @@ function Form() {
       <input
         id="guess-input"
         type="text"
-        value={value}
+        value={guess}
         onChange={handleChange}
         pattern={"[a-zA-Z]{5}"}
         maxLength={5}
@@ -28,4 +28,4 @@ function Form() {
   );
 }
 
-export default Form;
+export default GuessInput;

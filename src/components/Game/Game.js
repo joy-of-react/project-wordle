@@ -1,4 +1,4 @@
-import Form from '../Form/Form';
+import GuessInput from '../GuessInput';
 import { sample } from '../../utils';
 import { WORDS } from '../../data';
 
@@ -8,7 +8,7 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-  return <Form />;
+  return <GuessInput />;
 }
 
 export default Game;
