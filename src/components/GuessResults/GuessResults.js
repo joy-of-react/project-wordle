@@ -1,10 +1,10 @@
-function GuessResults({ results }) {
+function GuessResults({ guesses }) {
   return (
     <div className="guess-results">
-      {results.length &&
-        results.map((result) => (
+      {guesses.length > 0 &&
+        guesses.map((guess) => (
           <p className="guess" key={crypto.randomUUID()}>
-            {result}
+            {guess}
           </p>
         ))}
     </div>
