@@ -20,9 +20,11 @@ function GuessInput() {
         type="text"
         value={guess}
         onChange={handleChange}
-        pattern={"[a-zA-Z]{5}"}
         maxLength={5}
+        minLength={5}
+        pattern="[a-zA-Z]{5}"
         required
+        title="5 letter word"
       />
     </form>
   );
