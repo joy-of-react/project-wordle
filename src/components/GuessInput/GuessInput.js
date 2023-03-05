@@ -1,16 +1,16 @@
 import React from 'react';
 
-function GuessInput({ handleSubmitGuess }) {
+function GuessInput({ handleSubmitGuess, isGameOver }) {
   const [guess, setGuess] = React.useState('');
+
   function handleChange(event) {
     const textValue = event.target.value.toUpperCase();
 
     setGuess(textValue);
   };
+
   function handleSubmit(event) {
     event.preventDefault();
-
-    console.log({ guess });
 
     handleSubmitGuess(guess);
 
@@ -30,6 +30,7 @@ function GuessInput({ handleSubmitGuess }) {
         pattern="[a-zA-Z]{5}"
         required
         title="5 letter word"
+        disabled={isGameOver()}
       />
     </form>
   );
