@@ -1,7 +1,8 @@
 import React from 'react';
 import GuessInput from '../GuessInput';
 import GuessResults from '../GuessResults';
-import GameOverBanner from '../GameOverBanner';
+import GameLostBanner from '../GameLostBanner';
+import GameWonBanner from '../GameWonBanner';
 import { sample } from '../../utils';
 import { WORDS } from '../../data';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
@@ -10,25 +11,28 @@ import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
 const answer = sample(WORDS);
 
 function Game() {
+  const [gameStatus, setGameStatus] = React.useState('running');
   const [guesses, setGuesses] = React.useState([]);
 
   function handleSubmitGuess(guess) {
+    const nextGuesses = [...guesses, guess];
     setGuesses((prev) => [...prev, guess]);
-  }
 
-  function isGameWon() {
-    return guesses.some((guess) => guess === answer);
-  }
+    if (guess.toUpperCase() === answer) {
+      setGameStatus('won');
+    }
 
-  function isGameOver() {
-    return isGameWon() || guesses.length === NUM_OF_GUESSES_ALLOWED;
+    if (nextGuesses.length >= NUM_OF_GUESSES_ALLOWED) {
+      setGameStatus('lost');
+    }
   }
 
   return (
     <>
-      {isGameOver() && <GameOverBanner isGameWon={isGameWon} numOfGuesses={guesses.length} answer={answer} />}
+      {gameStatus === 'lost' && <GameLostBanner answer={answer} />}
+      {gameStatus === 'won' && <GameWonBanner numOfGuesses={guesses.length} />}
       <GuessResults guesses={guesses} answer={answer} />
-      <GuessInput handleSubmitGuess={handleSubmitGuess} isGameOver={isGameOver} />
+      <GuessInput handleSubmitGuess={handleSubmitGuess} gameStatus={gameStatus} />
     </>
   );
 }
