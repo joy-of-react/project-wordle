@@ -1,21 +1,39 @@
 import React, { useState } from "react";
 
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
+import { checkGuess } from '../../game-helpers';
 
-function Input({ guesses, setGuesses, numGuesses, setNumGuesses }) {
+function checkCorrectAnswer(checkedGuess) {
+  return checkedGuess.map(({status}) => status).every( s => s === 'correct')
+}
+function Input({
+  guesses,
+  setGuesses,
+  numGuesses,
+  setNumGuesses,
+  answer,
+  setGameOverStatus
+}) {
   const [guess, setGuess] = useState('');
   function handleOnSubmit(e) {
     e.preventDefault();
-    console.log('guess: ', { guess });
-    if (numGuesses === NUM_OF_GUESSES_ALLOWED) { 
-      return alert(`Already made ${NUM_OF_GUESSES_ALLOWED} guesses`);
-    }
+    
+    const checkedGuess = checkGuess(guess, answer);
+    const gotIt = checkCorrectAnswer(checkedGuess);
+    
     const newGuesses = [...guesses];
     const newNumGuesses = numGuesses + 1;
-    newGuesses[numGuesses] = guess;
+    newGuesses[numGuesses] = checkedGuess;
     setGuesses(newGuesses);
     setNumGuesses(newNumGuesses);
     setGuess('');
+    if (newNumGuesses === NUM_OF_GUESSES_ALLOWED) { 
+      return setGameOverStatus('sad');
+    }
+    
+    if(gotIt) {
+      setGameOverStatus('happy');
+    }
   }
   return (
     <form 

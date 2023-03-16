@@ -2,13 +2,18 @@ import React from "react";
 
 import { range } from '../../utils';
 
-function Guess({ children = '' }) {
-  const len = children ? children.length : 5;
+function Guess({ checkedGuess = [] }) {
   return (
     <p className="guess">{
-      range(0, len).map((g, index) => (
-        <span key={index} className='cell'>{children ? children[g] : ' '}</span>
-      ))
+      checkedGuess.length === 0 ?
+        range(0, 5).map((g, index) => (
+          <span key={index} className='cell'>{' '}</span>
+        )) : 
+          checkedGuess.map(({ letter, status }, idx) => (
+              <span
+                key={idx}
+                className={`cell ${status}` }>{letter}</span>
+          ))
     }</p>
   )
 }
