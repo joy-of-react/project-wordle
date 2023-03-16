@@ -17,7 +17,6 @@ function Game() {
   const [numGuesses, setNumGuesses] = useState(0);
   const [gameOverStatus, setGameOverStatus] = useState(null);
   
-  console.log('gameOverStatus', {gameOverStatus});
   return (
     <>
       <Results guesses={ guesses } />
