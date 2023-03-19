@@ -6,6 +6,7 @@ import { WORDS } from '../../data';
 import GuessForm from '../GuessForm';
 import GuessResults from '../GuessResults';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
+import Keyboard from '../Keyboard';
 
 
 function Game() {
@@ -29,6 +30,7 @@ function Game() {
   return <div className='wrapper'>
     <GuessResults guesses={guesses} />
     <GuessForm addGuess={addGuess} disabled={status !== 'pending'} />
+    <Keyboard guesses={guesses} />
     {status === 'loose' && <Banner type="sad" resetGame={resetGame}>
       <p>Sorry, the correct answer is <strong>{answer}</strong>.</p>
     </Banner>}
