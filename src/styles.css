@@ -124,17 +124,17 @@ h1 {
   --radius: 0px 0px 0px 4px;
 }
 
-.cell.correct {
+.cell.correct, .letter.correct {
   background: var(--color-success);
   border-color: var(--color-success);
   color: white;
 }
-.cell.incorrect {
+.cell.incorrect, .letter.incorrect {
   background: var(--color-gray-300);
   border-color: var(--color-gray-300);
   color: white;
 }
-.cell.misplaced {
+.cell.misplaced, .letter.misplaced {
   background: var(--color-warning);
   border-color: var(--color-warning);
   color: white;
@@ -230,3 +230,25 @@ h1 {
     transform: translateY(0%);
   }
 }
+
+.keyboard {
+  padding-top: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.keyboard-row {
+  display: flex;
+  gap: 4px;
+}
+
+.letter {
+  text-align: center;
+  width: 25px;
+  height: 25px;
+  border: 1px solid black;
+}
+
