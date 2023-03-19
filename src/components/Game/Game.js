@@ -7,13 +7,18 @@ import GuessForm from '../GuessForm';
 import GuessResults from '../GuessResults';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
 
-// Pick a random word on every pageload.
-const answer = sample(WORDS);
-// To make debugging easier, we'll log the solution in the console.
-console.info({ answer });
 
 function Game() {
   const [guesses, setGuesses] = useState([]);
+  const [answer, setAnswer] = useState(sample(WORDS));
+
+  // To make debugging easier, we'll log the solution in the console.
+  console.info({ answer });
+
+  const resetGame = () => {
+    setGuesses([]);
+    setAnswer(sample(WORDS));
+  }
 
   const addGuess = (newGuess) => {
     setGuesses([...guesses, checkGuess(newGuess, answer)]);
@@ -24,13 +29,13 @@ function Game() {
   return <div className='wrapper'>
     <GuessResults guesses={guesses} />
     <GuessForm addGuess={addGuess} disabled={status !== 'pending'} />
-    {status === 'loose' && <Banner type="sad">
+    {status === 'loose' && <Banner type="sad" resetGame={resetGame}>
       <p>Sorry, the correct answer is <strong>{answer}</strong>.</p>
     </Banner>}
-    {status === 'win' && <Banner type="happy">
+    {status === 'win' && <Banner type="happy" resetGame={resetGame}>
       <p>
-        <strong>Congratulations!</strong> Got it in
-        <strong>3 guesses</strong>.
+        <strong>Congratulations!</strong> Got it in{' '}
+        <strong>{guesses.length} guesses</strong>.
       </p>
     </Banner>}
   </div>;
@@ -38,8 +43,9 @@ function Game() {
 
 export default Game;
 
-const Banner = ({ children, type }) => {
+const Banner = ({ children, type, resetGame }) => {
   return <div className={`banner ${type || ''}`}>
     {children}
+    <button onClick={resetGame}>Reset</button>
   </div>
 }
