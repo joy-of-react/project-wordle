@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 
 
 
-function GuessForm() {
+function GuessForm({ addGuess }) {
   const [guess, setGuess] = useState('');
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(guess);
+    addGuess(guess);
     setGuess('');
   }
   return <form className="guess-input-wrapper" onSubmit={handleSubmit}>
