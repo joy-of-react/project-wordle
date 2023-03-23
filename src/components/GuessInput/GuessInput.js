@@ -14,8 +14,8 @@ function GuessInput({ guessResults, setGuessResults }) {
       className="guess-input-wrapper"
       onSubmit={(event) => {
         event.preventDefault();
-        console.log(guess.toUpperCase());
-        handleNewResult(guess.toUpperCase());
+        console.log(guess);
+        handleNewResult(guess);
         setGuess("");
       }}
     >
@@ -29,7 +29,7 @@ function GuessInput({ guessResults, setGuessResults }) {
         type="text"
         value={guess.toUpperCase()}
         onChange={(event) => {
-          setGuess(event.target.value);
+          setGuess(event.target.value.toUpperCase());
         }}
       />
     </form>
