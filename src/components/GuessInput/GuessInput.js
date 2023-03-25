@@ -1,22 +1,17 @@
 import React from "react";
 
-function GuessInput({ guesses, setGuesses }) {
-  const [guess, setGuess] = React.useState("");
+function GuessInput({ handleSubmitGuess }) {
+  const [tentativeGuess, setTentativeGuess] = React.useState("");
 
-  function handleNewResult(result) {
-    const nextGuesses = [...guesses, result];
-
-    setGuesses(nextGuesses);
-  }
+  // Feels kind of weird to me not to have the handleSubmitGuess function defined here.
 
   return (
     <form
       className="guess-input-wrapper"
       onSubmit={(event) => {
         event.preventDefault();
-        console.log(guess);
-        handleNewResult(guess);
-        setGuess("");
+        handleSubmitGuess(tentativeGuess);
+        setTentativeGuess("");
       }}
     >
       <label htmlFor="guess-input">Enter guess:</label>
@@ -27,9 +22,9 @@ function GuessInput({ guesses, setGuesses }) {
         maxLength={5}
         id="guess-input"
         type="text"
-        value={guess.toUpperCase()}
+        value={tentativeGuess}
         onChange={(event) => {
-          setGuess(event.target.value.toUpperCase());
+          setTentativeGuess(event.target.value.toUpperCase());
         }}
       />
     </form>
