@@ -1,18 +1,22 @@
 import React from "react";
 
-function Banner({ answerStatus, answer, guesses }) {
+function Banner({ gameStatus, answer, guesses }) {
   let bannerStatus;
 
-  if (answerStatus === "won") {
+  if (gameStatus === "won") {
     bannerStatus = (
       <div className="happy banner">
         <p>
           <strong>Congratulations!</strong> Got it in
-          <strong> {guesses.length} guesses</strong>.
+          <strong>
+            {" "}
+            {guesses.length === 1 ? "1 guess" : `${guesses.length} guesses`}
+          </strong>
+          .
         </p>
       </div>
     );
-  } else if (answerStatus === "lost") {
+  } else if (gameStatus === "lost") {
     bannerStatus = (
       <div className="sad banner">
         <p>
