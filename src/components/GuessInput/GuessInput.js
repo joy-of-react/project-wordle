@@ -1,6 +1,6 @@
 import React from "react";
 
-function GuessInput({ handleSubmitGuess }) {
+function GuessInput({ handleSubmitGuess, answerStatus }) {
   const [tentativeGuess, setTentativeGuess] = React.useState("");
 
   // Feels kind of weird to me not to have the handleSubmitGuess function defined here.
@@ -16,6 +16,7 @@ function GuessInput({ handleSubmitGuess }) {
     >
       <label htmlFor="guess-input">Enter guess:</label>
       <input
+        disabled={answerStatus !== "running" ? true : false}
         pattern=".{5,}"
         required
         title="5 characters minimum"
