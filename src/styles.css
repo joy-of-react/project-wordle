@@ -7,21 +7,23 @@ html {
   --game-spacing: 32px;
   --header-height: 4rem;
 
-  --color-success: hsl(150deg 70% 30%);
-  --color-warning: hsl(50deg 100% 30%);
+  --color-success: rgb(21, 138, 79);
+  --color-warning: rgb(150, 115, 0);
   --color-error: hsl(0deg 70% 45%);
   --color-gray-100: hsl(0deg 0% 10%);
   --color-gray-300: hsl(0deg 0% 25%);
   --color-gray-500: hsl(0deg 0% 50%);
   --color-gray-700: hsl(0deg 0% 75%);
-  --color-gray-900: hsl(0deg 0% 90%);
+  --color-gray-900: rgb(230, 230, 230);
+  --color-bright-orange: rgb(255, 174, 0);
+  --color-bright-orange: oklch(79.71% 0 68.82);
 }
 
 /*
   Custom styles
 */
 body {
-  font-family: sans-serif;
+  font-family: 'IBM Plex Mono', Courier, monospace;
 }
 
 @media (max-height: 600px) {
@@ -79,7 +81,7 @@ h1 {
   gap: var(--game-spacing);
   padding: var(--game-spacing) 32px;
   margin: 0 auto;
-  min-width: 250px;
+  min-width: 400px;
   max-width: min(500px, 58vh, 100%);
 }
 
@@ -88,6 +90,7 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-weight: 800;
 }
 
 .guess {
@@ -114,12 +117,15 @@ h1 {
 .guess:first-of-type .cell:first-of-type {
   --radius: 4px 0px 0px 0px;
 }
+
 .guess:first-of-type .cell:last-of-type {
   --radius: 0px 4px 0px 0px;
 }
+
 .guess:last-of-type .cell:last-of-type {
   --radius: 0px 0px 4px 0px;
 }
+
 .guess:last-of-type .cell:first-of-type {
   --radius: 0px 0px 0px 4px;
 }
@@ -129,11 +135,13 @@ h1 {
   border-color: var(--color-success);
   color: white;
 }
+
 .cell.incorrect {
   background: var(--color-gray-300);
   border-color: var(--color-gray-300);
   color: white;
 }
+
 .cell.misplaced {
   background: var(--color-warning);
   border-color: var(--color-warning);
@@ -154,11 +162,17 @@ h1 {
 .guess-input-wrapper input {
   display: block;
   width: 100%;
-  font-size: 2rem;
+  font-size: 2.4rem;
   border: 2px solid var(--color-gray-300);
   border-radius: 4px;
   padding: 8px 16px;
   outline-offset: 4px;
+  letter-spacing: 5px;
+  font-weight: 800;
+}
+
+.guess-input-wrapper input:disabled {
+  cursor: not-allowed;
 }
 
 .banner {
@@ -180,6 +194,7 @@ h1 {
   background: var(--color-success);
   color: white;
 }
+
 .sad.banner {
   background: var(--color-error);
   color: white;
@@ -208,6 +223,7 @@ h1 {
   border-radius: 8px;
   padding: 24px 32px;
 }
+
 .modal-close-btn {
   position: absolute;
   top: 0;
@@ -215,6 +231,7 @@ h1 {
   padding: 16px;
   cursor: pointer;
 }
+
 .modal-title {
   margin-bottom: 0.5em;
 }
@@ -226,6 +243,7 @@ h1 {
   from {
     transform: translateY(100%);
   }
+
   to {
     transform: translateY(0%);
   }
