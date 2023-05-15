@@ -1,22 +1,29 @@
 import React from 'react';
 
-function GuessHistory({ guesses, setGuesses }) {
+function GuessInput({ guesses, setGuesses, gameStatus }) {
   const [input, setInput] = React.useState('');
 
   function SubmitGuess(event) {
-    event.preventDefault();
-    let nextGuesses = [...guesses, input];
-    console.log(nextGuesses);
+    if (input === '') {
+      event.preventDefault();
+    } else {
+      event.preventDefault();
+      let nextGuesses = [...guesses, input];
+      console.log(nextGuesses);
 
-    setGuesses(nextGuesses);
-    setInput('');
+      setGuesses(nextGuesses);
+      setInput('');
+    }
   }
+
+  let disabled =
+    (gameStatus === "won" | "lost") ? true : false;
 
   return (
     <>
       <form onSubmit={SubmitGuess} className="guess-input-wrapper">
         <label htmlFor='guess-input'>Enter guess:</label>
-        <input title="Fill in a 5 letter word" id="guess-input" type="text" pattern='[A-Za-z]{5}' maxLength={5} value={input} onChange={(event) => {
+        <input disabled={disabled} title="Fill in a 5 letter word" id="guess-input" type="text" pattern='[A-Za-z]{5}' minLength={5} maxLength={5} value={input} onChange={(event) => {
           let newInput = event.target.value.toUpperCase();
           setInput(newInput);
         }} />
@@ -25,4 +32,4 @@ function GuessHistory({ guesses, setGuesses }) {
   )
 }
 
-export default GuessHistory;
+export default GuessInput;

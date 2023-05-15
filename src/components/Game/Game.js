@@ -1,5 +1,6 @@
 import React from 'react';
-import GuessHistory from '../GuessHistory';
+// import GuessHistory from '../GuessHistory';
+import SuccessBanner, { GameOverBanner, LostBanner } from "../Banner";
 import GuessInput from "../GuessInput";
 import GuessResults from '../GuessResults';
 import { sample } from '../../utils';
@@ -14,10 +15,18 @@ console.info({ answer });
 
 function Game() {
   const [guesses, setGuesses] = React.useState([]);
+  const numOfGuesses = guesses.length;
+  const latestGuess = ((numOfGuesses > 0) ? guesses[numOfGuesses - 1] : undefined)
+
+  let gameStatus
+  if (latestGuess === answer) { gameStatus = "won" }
+  else if (numOfGuesses <= 6) { gameStatus = "running" }
+  else { gameStatus = "lost" }
 
   return <>
-    <GuessResults guesses={guesses} />
-    <GuessInput guesses={guesses} setGuesses={setGuesses} />
+    <GameOverBanner gameStatus={gameStatus} answer={answer} numOfGuesses={numOfGuesses} />
+    <GuessResults guesses={guesses} answer={answer} />
+    <GuessInput gameStatus={gameStatus} guesses={guesses} setGuesses={setGuesses} />
   </>;
 }
 
