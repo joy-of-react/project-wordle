@@ -216,14 +216,14 @@ h1 {
   gap: 16px;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 16px;
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
-  padding: 32px;
+  padding: 20px 32px;
   text-align: center;
   animation: slideUp 750ms cubic-bezier(0, 0.72, 0.24, 1.02);
-  border-radius: 4px 4px 0px 0px;
+  border-radius: 8px;
   will-change: transform;
 }
 
