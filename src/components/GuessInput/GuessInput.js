@@ -1,6 +1,6 @@
 import React from 'react';
 
-function GuessInput({ guesses, setGuesses, gameStatus }) {
+function GuessInput({ handleSubmitGuess, gameStatus }) {
   const [input, setInput] = React.useState('');
 
   function SubmitGuess(event) {
@@ -8,16 +8,13 @@ function GuessInput({ guesses, setGuesses, gameStatus }) {
       event.preventDefault();
     } else {
       event.preventDefault();
-      let nextGuesses = [...guesses, input];
-      console.log(nextGuesses);
-
-      setGuesses(nextGuesses);
+      handleSubmitGuess(input);
       setInput('');
     }
   }
 
   let disabled =
-    (gameStatus === "won" | "lost") ? true : false;
+    (gameStatus !== "running");
 
   return (
     <>

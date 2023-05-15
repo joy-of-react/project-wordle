@@ -1,33 +1,57 @@
 import React from 'react';
-// import GuessHistory from '../GuessHistory';
-import SuccessBanner, { GameOverBanner, LostBanner } from "../Banner";
-import GuessInput from "../GuessInput";
-import GuessResults from '../GuessResults';
+
 import { sample } from '../../utils';
 import { WORDS } from '../../data';
+import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
+import { checkGuess } from '../../game-helpers';
 
-// Pick a random word on every pageload.
-const answer = sample(WORDS);
-// To make debugging easier, we'll log the solution in the console.
-console.info({ answer });
-
-
+import GuessInput from '../GuessInput';
+import GuessResults from '../GuessResults';
+import GameOverBanner from '../Banner';
+import Keyboard from '../Keyboard';
 
 function Game() {
+  const [answer, setAnswer] = React.useState(() => sample(WORDS));
+
+  // running | won | lost
+  const [gameStatus, setGameStatus] = React.useState('running');
+
   const [guesses, setGuesses] = React.useState([]);
+  function handleSubmitGuess(tentativeGuess) {
+    const nextGuesses = [...guesses, tentativeGuess];
+    setGuesses(nextGuesses);
+    if (tentativeGuess.toUpperCase() === answer) {
+      setGameStatus('won');
+    } else if (nextGuesses.length >= NUM_OF_GUESSES_ALLOWED) {
+      setGameStatus('lost');
+    }
+  }
+
   const numOfGuesses = guesses.length;
-  const latestGuess = ((numOfGuesses > 0) ? guesses[numOfGuesses - 1] : undefined)
+  function handleRestart() {
+    const newAnswer = sample(WORDS);
+    setAnswer(newAnswer);
+    setGuesses([]);
+    setGameStatus('running');
+  }
 
-  let gameStatus
-  if (latestGuess === answer) { gameStatus = "won" }
-  else if (numOfGuesses <= 6) { gameStatus = "running" }
-  else { gameStatus = "lost" }
+  const validatedGuesses = guesses.map((guess) =>
+    checkGuess(guess, answer)
+  );
 
-  return <>
-    <GameOverBanner gameStatus={gameStatus} answer={answer} numOfGuesses={numOfGuesses} />
-    <GuessResults guesses={guesses} answer={answer} />
-    <GuessInput gameStatus={gameStatus} guesses={guesses} setGuesses={setGuesses} />
-  </>;
+  return (
+    <>
+      <GuessResults
+        validatedGuesses={validatedGuesses}
+        answer={answer}
+      />
+      <GuessInput
+        gameStatus={gameStatus}
+        handleSubmitGuess={handleSubmitGuess}
+      />
+      <Keyboard validatedGuesses={validatedGuesses} />
+      <GameOverBanner gameStatus={gameStatus} answer={answer} numOfGuesses={numOfGuesses} handleRestart={handleRestart} />
+    </>
+  );
 }
-
 export default Game;
