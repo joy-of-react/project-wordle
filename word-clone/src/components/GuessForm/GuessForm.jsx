@@ -3,7 +3,7 @@ import React from 'react';
 function GuessForm() {
   return (
     <div>
-      <p>Connected</p>
+      <p>GuessForm</p>
     </div>
     )
 }

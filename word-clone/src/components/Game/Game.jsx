@@ -3,7 +3,10 @@ import GuessForm from '../GuessForm/GuessForm';
 
 function Game() {
   return (
+    <div>
+    Game
     <GuessForm />
+    </div>
   )
 
 }
