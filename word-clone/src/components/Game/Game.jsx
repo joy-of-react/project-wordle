@@ -1,5 +1,5 @@
 import React from "react";
-import GuessForm from "/src/components/GuessForm/GuessForm";
+import GuessForm from '../GuessForm/GuessForm';
 
 function Game() {
   return (
