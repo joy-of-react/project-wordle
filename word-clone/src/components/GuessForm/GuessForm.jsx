@@ -12,16 +12,18 @@ function GuessForm({ handleAddGuess }) {
         handleAddGuess(guess);
 
         setGuess('');
-        {console.log(guess)}
+        console.log(guess)
       }}>
 
         <label htmlFor="guess-input">Enter Guess: </label>
         <input
+          pattern='[a-zA-Z]{5}'
+          title='Must be a 5 letter word'
           id="guess-input"
           type="text"
           value={guess}
           onChange={event => {
-            setGuess(event.target.value)
+            setGuess(event.target.value.toUpperCase())
           }}
           />
         <button>Guess</button>
