@@ -9,7 +9,7 @@ function Keyboard({ history }) {
 		const letters = row.map((letter) => <Key key={`key-${letter}`} letter={letter} status={history?.[letter]} />);
 
 		return (
-			<div div key={`row-${index}`} className='row'>
+			<div key={`row-${index}`} className='row'>
 				{letters}
 			</div>
 		);
