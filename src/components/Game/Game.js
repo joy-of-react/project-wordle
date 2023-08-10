@@ -3,10 +3,12 @@ import React, { useState } from 'react';
 import { sample } from '../../utils';
 import { WORDS } from '../../data';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
+import { checkGuess } from '../../game-helpers';
 import GuessInput from '../GuessInput';
 import GuessResults from '../GuessResults';
 import HappyBanner from '../HappyBanner';
 import SadBanner from '../SadBanner';
+import Keyboard from '../Keyboard';
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -15,13 +17,12 @@ console.info({ answer });
 
 function Game() {
 	const [guesses, setGuesses] = useState([]);
+	const [guessHistory, setGuessHistory] = useState({});
+	const [status, setStatus] = useState([]);
 	const [gameResult, setGameResult] = useState();
 	const numOfGuesses = guesses.length;
 
-	const handleGuessResults = (guess) => {
-		const newGuesses = [...guesses, guess];
-		setGuesses(newGuesses);
-
+	const checkResult = (guess) => {
 		const correctAnswer = guess === answer;
 		const gameOver = numOfGuesses === NUM_OF_GUESSES_ALLOWED - 1;
 
@@ -34,10 +35,66 @@ function Game() {
 		}
 	};
 
+	const saveResult = (guess) => {
+		// check game status
+		const newStatus = checkGuess(guess, answer);
+
+		// save new status
+		setStatus((prevStatus) => [...prevStatus, newStatus]);
+
+		// save status history
+		// e.g. {A:correct, H:incorrect, L:incorrect}
+		// answer rating: incorrect(0) -> misplaced(1) -> correct(2)
+		// if there's a higher rated version of the letter in history, skip it
+		// if there's no, or lower rated version of the letter in history, add/overwrite it
+
+		// copy state object
+		const newGuessHistory = { ...guessHistory };
+		// answer rating
+		const statusRating = ['incorrect', 'misplaced', 'correct'];
+
+		// check each letter in new status
+		newStatus.forEach(({ letter, status }) => {
+			const letterInHistory = newGuessHistory?.[letter];
+
+			// if letter is already in history
+			if (!!letterInHistory) {
+				// get the rating of the letter in history
+				const prevRating = statusRating.indexOf(letterInHistory);
+
+				// get the rating of the new letter
+				const newRating = statusRating.indexOf(status);
+
+				// if the new letter has better rating, replace it
+				if (newRating > prevRating) {
+					newGuessHistory[letter] = status;
+				}
+			} else {
+				// if letter is not yet in history, add it
+				newGuessHistory[letter] = status;
+			}
+		});
+
+		// save new history in state
+		setGuessHistory(newGuessHistory);
+	};
+
+	const handleGuessResults = (guess) => {
+		const newGuesses = [...guesses, guess];
+		setGuesses(newGuesses);
+
+		// check wether game has ended
+		checkResult(guess);
+
+		// save status and history
+		saveResult(guess);
+	};
+
 	return (
 		<>
-			<GuessResults answer={answer} results={guesses} />
+			<GuessResults status={status} />
 			<GuessInput handleGuessResults={handleGuessResults} disabled={!!gameResult} />
+			<Keyboard history={guessHistory} />
 			{gameResult === 'win' && <HappyBanner numOfGuesses={numOfGuesses} />}
 			{gameResult === 'loose' && <SadBanner answer={answer} />}
 		</>
