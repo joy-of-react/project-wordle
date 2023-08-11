@@ -6,20 +6,15 @@ import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
 import { checkGuess } from '../../game-helpers';
 import GuessInput from '../GuessInput';
 import GuessResults from '../GuessResults';
-import HappyBanner from '../HappyBanner';
-import SadBanner from '../SadBanner';
+import GameOverBanner from '../GameOverBanner';
 import Keyboard from '../Keyboard';
 
-// Pick a random word on every pageload.
-const answer = sample(WORDS);
-// To make debugging easier, we'll log the solution in the console.
-console.info({ answer });
-
 function Game() {
+	const [answer, setAnswer] = useState(() => sample(WORDS));
 	const [guesses, setGuesses] = useState([]);
 	const [guessHistory, setGuessHistory] = useState({});
 	const [status, setStatus] = useState([]);
-	const [gameResult, setGameResult] = useState();
+	const [gameResult, setGameResult] = useState(null);
 	const numOfGuesses = guesses.length;
 
 	const checkResult = (guess) => {
@@ -90,13 +85,31 @@ function Game() {
 		saveResult(guess);
 	};
 
+	const handleRestartGame = () => {
+		const newAnswer = sample(WORDS);
+		setAnswer(newAnswer);
+		setGuesses([]);
+		setGuessHistory({});
+		setStatus([]);
+		setGameResult(null);
+	};
+
+	// To make debugging easier, we'll log the solution in the console.
+	console.info({ answer });
+
 	return (
 		<>
 			<GuessResults status={status} />
 			<GuessInput handleGuessResults={handleGuessResults} disabled={!!gameResult} />
 			<Keyboard history={guessHistory} />
-			{gameResult === 'win' && <HappyBanner numOfGuesses={numOfGuesses} />}
-			{gameResult === 'loose' && <SadBanner answer={answer} />}
+			{gameResult && (
+				<GameOverBanner
+					gameResult={gameResult}
+					numOfGuesses={numOfGuesses}
+					answer={answer}
+					handleRestartGame={handleRestartGame}
+				/>
+			)}
 		</>
 	);
 }
