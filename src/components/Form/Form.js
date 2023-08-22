@@ -4,7 +4,11 @@ const Form = () => {
   const [guess, setGuess] = React.useState("")
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(guess)
+    if (guess.length !== 5) {
+      alert("Please enter 5 characters ❤️")
+      return
+    }
+    console.log({ guess })
     setGuess("")
   }
 
@@ -21,9 +25,11 @@ const Form = () => {
         onChange={(e) => {
           setGuess(e.target.value.toUpperCase())
         }}
-        minLength="5"
-        maxLength="5"
+        minLength={5}
+        maxLength={5}
         pattern="[A-Za-z]{5}"
+        title="5 letter word"
+        required
       />
     </form>
   )
