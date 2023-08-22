@@ -5,9 +5,7 @@ function GuessedInput({ handleSubmitGuess }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-
     handleSubmitGuess(tentativeGuess);
-
     setTentativeGuess("");
   }
 
