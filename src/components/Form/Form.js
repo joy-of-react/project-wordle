@@ -1,6 +1,6 @@
 import React from "react"
 
-const Form = () => {
+const Form = ({ addGuess }) => {
   const [guess, setGuess] = React.useState("")
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -9,6 +9,7 @@ const Form = () => {
       return
     }
     console.log({ guess })
+    addGuess(guess)
     setGuess("")
   }
 
