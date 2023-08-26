@@ -4,7 +4,7 @@
   "private": true,
   "author": "Josh Comeau <me@joshwcomeau.com>",
   "dependencies": {
-    "new-component": "4.0.0",
+    "new-component": "^5",
     "parcel": "2.9.3",
     "prettier": "2.6.2",
     "process": "0.11.10",
