@@ -5,11 +5,9 @@ node_modules
 .pnp
 .pnp.js
 
-# testing
-coverage
-
-# production
-build
+# parcel-generated files
+dist
+.parcel-cache
 
 # misc
 .DS_Store
