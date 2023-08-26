@@ -7,6 +7,7 @@
     "new-component": "4.0.0",
     "parcel": "2.9.3",
     "prettier": "2.6.2",
+    "process": "0.11.10",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
@@ -15,8 +16,5 @@
     "build": "parcel build public/index.html",
     "new-component": "new-component"
   },
-  "browserslist": "> 0.5%, last 2 versions, not dead",
-  "devDependencies": {
-    "process": "^0.11.10"
-  }
+  "browserslist": "> 0.5%, last 2 versions, not dead"
 }
