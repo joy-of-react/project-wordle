@@ -20,6 +20,12 @@ If you're not sure how to run a local development server, or if you run into som
 >
 > This workshop is split into 5 exercises, and each exercise has a solution video. If you spend more than 10 minutes stuck on an exercise, I encourage you to **watch the solution.** If things are still unclear after that, please ask questions in the Discord community!
 
+## Troubleshooting
+
+If you run into any weird errors when trying to run a development server, start by deleting the `.parcel-cache` directory. This directory holds temporary automatically-generated files, and sometimes things get out of sync, and they need to be deleted.
+
+If you're still experiencing issues after deleting `.parcel-cache`, you can share the error message and any additional details in Discord.
+
 ## Exercise 1: GuessInput
 
 First thing’s first: we need a way to submit guesses!
