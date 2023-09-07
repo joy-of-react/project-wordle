@@ -124,17 +124,17 @@ h1 {
   --radius: 0px 0px 0px 4px;
 }
 
-.cell.correct {
+.cell.correct, .keyboard-key.correct {
   background: var(--color-success);
   border-color: var(--color-success);
   color: white;
 }
-.cell.incorrect {
+.cell.incorrect, .keyboard-key.incorrect {
   background: var(--color-gray-300);
   border-color: var(--color-gray-300);
   color: white;
 }
-.cell.misplaced {
+.cell.misplaced, .keyboard-key.misplaced {
   background: var(--color-warning);
   border-color: var(--color-warning);
   color: white;
@@ -162,6 +162,9 @@ h1 {
 }
 
 .banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: fixed;
   left: 0;
   right: 0;
@@ -229,4 +232,49 @@ h1 {
   to {
     transform: translateY(0%);
   }
+}
+
+.keyboard-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.keyboard-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+
+.keyboard-row:nth-child(2) {
+  padding: 0 10px;
+}
+
+.keyboard-row:last-child {
+  margin-bottom: 0;
+}
+
+.keyboard-key {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  border-radius: 2px;
+  background-color: rgb(208, 211, 214);
+  color: black;
+  font-size: 1.5rem;
+}
+
+.restart-button {
+  width: 130px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  border: 1px solid var(--color-gray-700);
+  border-radius: 15px;
+  background: var(--color-gray-500);
+  color: white;
+  cursor: pointer;
 }
