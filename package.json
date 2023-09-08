@@ -4,6 +4,8 @@
   "private": true,
   "author": "Josh Comeau <me@joshwcomeau.com>",
   "dependencies": {
+    "eslint": "8.49.0",
+    "eslint-config-react-app": "7.0.1",
     "new-component": "5.0.2",
     "parcel": "2.9.2",
     "prettier": "2.6.2",
