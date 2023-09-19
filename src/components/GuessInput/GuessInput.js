@@ -1,14 +1,29 @@
 import React from 'react';
 
-function GuessInput({ tentativeGuess, updateGuess, updateWords, words }) {
+const isLetter = str => str.length === 1 && str.match(/[a-z]/i);
+
+function GuessInput({ handleSubmitGuess, gameStatus }) {
+  const [tentativeGuess, setTentativeGuess] = React.useState('');
+
   const handleSubmit = e => {
     e.preventDefault();
 
-    if (words.length === 0 || tentativeGuess !== words.slice(-1).label) {
-      updateWords(tentativeGuess);
-      updateGuess();
-    }
+    handleSubmitGuess(tentativeGuess);
+
+    setTentativeGuess('');
   };
+
+  const handleChange = e => {
+    const word = e.target.value;
+    if (
+      e.nativeEvent.inputType !== 'deleteContentBackward' &&
+      (!isLetter(word.slice(-1)) || word.length > 5)
+    ) {
+      return;
+    }
+    setTentativeGuess(word.toUpperCase());
+  };
+
   return (
     <>
       <form
@@ -20,10 +35,15 @@ function GuessInput({ tentativeGuess, updateGuess, updateWords, words }) {
           id="guess-input"
           type="text"
           value={tentativeGuess}
-          onChange={updateGuess}
+          onChange={e => handleChange(e)}
           style={{ textTransform: 'uppercase' }}
+          disabled={gameStatus !== 'inGame'}
         />
-        <button className="btn" disabled={tentativeGuess.length !== 5}>
+        <button
+          className="btn"
+          type="submit"
+          disabled={tentativeGuess.length !== 5}
+        >
           Submit
         </button>
       </form>
