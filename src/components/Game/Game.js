@@ -5,46 +5,38 @@ import { WORDS } from "../../data";
 import Input from "../Input/Input";
 import Guesses from "../Guesses/Guesses";
 import { checkGuess } from "../../game-helpers";
-
-// Pick a random word on every pageload.
-const answer = sample(WORDS);
-// To make debugging easier, we'll log the solution in the console.
-console.info({ answer });
+import Banner from "../Banner/Banner";
 
 function Game() {
+  const [answer, setAnswer] = useState(() => sample(WORDS));
   const [guesses, setGuesses] = useState([]);
+
+  const gameIsWon =
+    guesses.filter((guess) => guess === answer).length > 0 ? true : false;
+
+  const nonEmptyGuesses = guesses.filter((guess) => guess.length === 5);
+
+  const gameLost = nonEmptyGuesses.length === 6 && gameIsWon === false;
 
   return (
     <>
+      {(gameLost || gameIsWon) && (
+        <button
+          type="reset"
+          onClick={() => {
+            setGuesses([]);
+            setAnswer(() => sample(WORDS));
+          }}
+        >
+          Reset
+        </button>
+      )}
       <Guesses guesses={guesses} answer={answer} />
       <Input setGuesses={(guess) => setGuesses([...guesses, guess])} />
-      {guesses.filter((guess) => guess === answer).length > 0 ? (
-        <div className="happy banner">
-          <p>
-            <strong>Congratulations!</strong> Got it in
-            <strong>
-              {guesses.filter((x) => x.length === 5).length > 0
-                ? guesses.filter((x) => x.length === 5).length === 1
-                  ? " 1 guess"
-                  : ` ${guesses.filter((x) => x.length === 5).length} guesses`
-                : ""}
-            </strong>
-            .
-          </p>
-        </div>
-      ) : (
-        guesses.length >= 6 && (
-          <div className="sad banner">
-            <p>
-              Sorry, the correct answer is <strong>{answer}</strong>.
-            </p>
-          </div>
-        )
-      )}
+      {gameLost && <Banner type="sad" answer={answer} />}
+      {gameIsWon && <Banner type="happy" guesses={nonEmptyGuesses.length} />}
     </>
   );
 }
 
 export default Game;
-
-function checkIfWordIsCorrect(word, answer) {}
