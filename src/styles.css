@@ -40,6 +40,16 @@ button {
   color: inherit;
 }
 
+.btn {
+  border: 2px solid red;
+  text-align: center;
+}
+
+.btn[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
 .wrapper {
   display: flex;
   flex-direction: column;
