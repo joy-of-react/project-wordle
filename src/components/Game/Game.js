@@ -15,7 +15,7 @@ function Game() {
 
   return (
     <>
-      <Guesses guesses={guesses} />
+      <Guesses guesses={guesses} answer={answer} />
       <Input setGuesses={(guess) => setGuesses([...guesses, guess])} />
     </>
   );
