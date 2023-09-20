@@ -42,6 +42,7 @@ function GuessInput({ handleSubmitGuess, gameStatus }) {
           onChange={e => handleChange(e)}
           style={{ textTransform: 'uppercase' }}
           disabled={gameStatus !== 'inGame'}
+          autocomplete="off"
         />
         <button
           className={`btn ${
