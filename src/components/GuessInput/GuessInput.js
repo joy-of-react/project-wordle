@@ -7,6 +7,10 @@ function GuessInput({ handleSubmitGuess, gameStatus }) {
 
   const handleSubmit = e => {
     e.preventDefault();
+    if (tentativeGuess.length !== 5) {
+      window.alert('A valid guess must contain 5 letters.');
+      return;
+    }
 
     handleSubmitGuess(tentativeGuess);
 
@@ -40,9 +44,10 @@ function GuessInput({ handleSubmitGuess, gameStatus }) {
           disabled={gameStatus !== 'inGame'}
         />
         <button
-          className="btn"
+          className={`btn ${
+            tentativeGuess.length !== 5 ? 'btn-disabled' : ''
+          }`}
           type="submit"
-          disabled={tentativeGuess.length !== 5}
         >
           Submit
         </button>

@@ -9,6 +9,7 @@ import GuessInput from '../GuessInput';
 import GuessResults from '../GuessResults';
 import Keyboard from '../KeyBoard';
 import Banner from '../Banner';
+import NewGameBtn from '../NewGameBtn';
 
 function Game() {
   const [words, setWords] = React.useState([]);
@@ -22,6 +23,13 @@ function Game() {
     } else if (words.length === NUM_OF_GUESSES_ALLOWED - 1) {
       setGameStatus('lost');
     }
+  }
+  function handleRestart() {
+    let newAnswer = sample(WORDS);
+    while (newAnswer === answer) newAnswer = sample(WORDS);
+    setAnswer(newAnswer);
+    setWords([]);
+    setGameStatus('inGame');
   }
 
   const validatedGuesses = words.map(word => checkGuess(word, answer));
@@ -39,7 +47,7 @@ function Game() {
       {gameStatus === 'won' && (
         <Banner status="happy">
           <p>
-            <strong>Congratulations!</strong> Got it in{' '}
+            <strong>Congratulations!</strong> You got it in{' '}
             <strong>
               {words.length === 1 ? '1 guess' : `${words.length} guesses`}
             </strong>
@@ -54,6 +62,8 @@ function Game() {
           </p>
         </Banner>
       )}
+
+      <NewGameBtn handleRestart={handleRestart} gameStatus={gameStatus} />
     </>
   );
 }

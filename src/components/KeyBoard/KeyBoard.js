@@ -21,7 +21,7 @@ function getStatusByLetter(validatedGuesses) {
 }
 
 const KeyBoard = ({ validatedGuesses }) => {
-  let statusByLetter = getStatusByLetter(validatedGuesses);
+  let statusByLetter = getStatusByLetter(validatedGuesses); // how is it dynamic??
 
   return (
     <div className="keyboard">
