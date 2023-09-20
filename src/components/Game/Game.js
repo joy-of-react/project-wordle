@@ -33,7 +33,6 @@ function Game() {
   }
 
   const validatedGuesses = words.map(word => checkGuess(word, answer));
-  console.log('answer');
   return (
     <>
       <GuessResults validatedGuesses={validatedGuesses} />

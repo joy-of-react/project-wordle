@@ -8,7 +8,6 @@ const Cell = ({ letter, status }) => {
 };
 
 const Guess = ({ word }) => {
-  console.log('word', word);
   return (
     <p className="guess">
       {range(5).map(num => (
