@@ -26,7 +26,7 @@ function Game() {
   return (
     <div>
       <GuessResults guesses={guesses} />
-      <InputField handleAddGuess={handleAddGuess} />
+      <InputField handleAddGuess={handleAddGuess} guesses={guesses} />
     </div>
   );
 }
