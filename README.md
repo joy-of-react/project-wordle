@@ -11,16 +11,12 @@ This game was built as part of the projects for Josh Comeau's course [The Joy of
 
 ## Demo
 
-
 https://github.com/RuxinZ/project-wordle/assets/26369040/f2fc4876-c739-44b7-b378-7e6e4b99c07d
 
+## Local Setup
 
-
-
-## Run it locally
-
-Fork and clone the repo. cd to the root the project, and then run the following script
-
-```
-npm run dev
-```
+- Fork the repo
+- Clone the repo and cd to the root the project
+- Run `npm install`
+- Run `npm run dev`
+- Copy the local host address to your browser, and enjoy!
