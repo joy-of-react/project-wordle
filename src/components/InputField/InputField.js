@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 
-function InputField() {
+function InputField({ handleAddGuess }) {
   const [guess, setGuess] = useState("");
-
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(guess);
+    handleAddGuess(guess);
     setGuess("");
   }
 
@@ -23,7 +22,6 @@ function InputField() {
           }}
         />
       </form>
-      <p>{guess}</p>
     </div>
   );
 }
