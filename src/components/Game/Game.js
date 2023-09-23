@@ -14,20 +14,18 @@ console.info({ answer });
 function Game() {
 
   const [inputs, setInputs] = React.useState([]);
-   console.log("Inputs inside Game component", inputs)
+
   function handleGuessSubmit(guess){
-    const newGuess = {
-      guess,
-      id: crypto.randomUUID()
-    }
-    const newInput = [...inputs, newGuess];
-    setInputs(newInput);
+    const newGuess = [...inputs, guess]    
+    setInputs(newGuess);
   }
 
-  return (<>
+  return (
+  <>
       <Guess inputs={inputs}/>
       <Form handleGuessSubmit = {handleGuessSubmit}/>   
-  </>);
+  </>
+  );
 }
 
 export default Game;

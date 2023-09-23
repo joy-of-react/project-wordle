@@ -1,14 +1,17 @@
 import React from 'react';
 import Slots from '../Slots/Slots';
 
+import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
+import { range } from '../../utils';
+
 function Guess({inputs}){
-    console.log("Inside Guesses Component", inputs);
+    
     return(
     <>
     <div className="guess-results">
-        {inputs.map(({guess, id}) => (  
-        //  <p key={id} className='guess'>{guess}</p>
-         <Slots guess={guess} id={id}/>
+
+        {range(NUM_OF_GUESSES_ALLOWED).map((num) => (
+            <Slots key={num} guess={inputs[num]} />  
         ))}
     </div>
     </>
