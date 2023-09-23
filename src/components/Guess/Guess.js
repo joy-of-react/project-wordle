@@ -1,15 +1,30 @@
 import React from "react";
 
-function Guess({ guess }) {
-  const letters = guess?.guess?.split("") ?? [];
+import { checkGuess } from "../../game-helpers";
+
+function Guess({ guess, answer }) {
+  const letters = Array.from({ length: 5 }, () => ({
+    letter: "",
+    status: "",
+    id: crypto.randomUUID(),
+  }));
+
+  if (guess && guess.guess !== undefined) {
+    const results = checkGuess(guess.guess, answer);
+
+    results.forEach((result, index) => {
+      letters[index].letter = result.letter;
+      letters[index].status = result.status;
+    });
+  }
 
   return (
     <p className="guess">
-      <span className="cell">{letters[0]}</span>
-      <span className="cell">{letters[1]}</span>
-      <span className="cell">{letters[2]}</span>
-      <span className="cell">{letters[3]}</span>
-      <span className="cell">{letters[4]}</span>
+      {letters.map(({ letter, status, id }) => (
+        <span key={id} className={`cell ${status}`}>
+          {letter}
+        </span>
+      ))}
     </p>
   );
 }
