@@ -1,7 +1,8 @@
 import React from 'react';
 
-function Form({handleGuessSubmit}){
+function Form({handleGuessSubmit,  gameStatus}){
     const [ guess, setGuess ] = React.useState('');
+    
     return(
         <>
         <form 
@@ -21,6 +22,7 @@ function Form({handleGuessSubmit}){
              pattern="[A-Za-z]{5}" 
              title="Please enter a 5 letter world 💖"
              value = {guess}
+             disabled = {gameStatus !== 'running'}
              onChange = {(event) => {
                 const userGuess = (event.target.value).toUpperCase();
                 setGuess(userGuess);
