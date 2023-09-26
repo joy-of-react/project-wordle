@@ -2,9 +2,12 @@ import React from 'react';
 
 const isLetter = str => str.length === 1 && str.match(/[a-z]/i);
 
-function GuessInput({ handleSubmitGuess, gameStatus }) {
-  const [tentativeGuess, setTentativeGuess] = React.useState('');
-
+function GuessInput({
+  handleSubmitGuess,
+  gameStatus,
+  tentativeGuess,
+  setTentativeGuess,
+}) {
   const handleSubmit = e => {
     e.preventDefault();
     if (tentativeGuess.length !== 5) {
@@ -38,7 +41,7 @@ function GuessInput({ handleSubmitGuess, gameStatus }) {
         onChange={e => handleChange(e)}
         style={{ textTransform: 'uppercase' }}
         disabled={gameStatus !== 'inGame'}
-        autocomplete="off"
+        autoComplete="off"
       />
       <button
         className={`btn ${
