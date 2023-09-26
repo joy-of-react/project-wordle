@@ -1,5 +1,4 @@
 import React from 'react';
-import { checkGuess } from '../../game-helpers';
 import Key from './Key';
 import styles from './Key.module.css';
 
@@ -58,10 +57,10 @@ const KeyBoard = ({
 
       <div className="keyboard-row">
         <Key
-          value="Enter"
-          children="Enter"
+          value="ENTER"
+          children="ENTER"
           onClick={onClick}
-          classStr={`key ${styles.key_special}`}
+          classStr={`${styles.key_enter} ${styles.key_special}`}
           gameStatus={gameStatus}
         />
         {ROWS[2].map(letter => (
@@ -76,10 +75,10 @@ const KeyBoard = ({
         ))}
 
         <Key
-          value="Delete"
-          children="Delete"
+          value="DELETE"
+          children="DELETE"
           onClick={onClick}
-          classStr={`key ${styles.key_special}`}
+          classStr={`${styles.key_delete} ${styles.key_special}`}
           gameStatus={gameStatus}
         />
       </div>

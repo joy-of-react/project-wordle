@@ -25,6 +25,7 @@ function Game() {
     } else if (words.length === NUM_OF_GUESSES_ALLOWED - 1) {
       setGameStatus('lost');
     }
+    // setTentativeGuess('');
   }
   function handleRestart() {
     let newAnswer = sample(WORDS);
@@ -46,6 +47,14 @@ function Game() {
     //TODO: Add error message
     if (tentativeGuess.length < 5) return;
     handleSubmitGuess(tentativeGuess);
+    setTentativeGuess('');
+  }
+
+  function onDelete() {
+    if (gameStatus !== 'inGame') return;
+    if (tentativeGuess.length === 0) return;
+    const newTentativeGuess = tentativeGuess.slice(0, -1);
+    setTentativeGuess(newTentativeGuess);
   }
 
   const validatedGuesses = words.map(word => checkGuess(word, answer));
@@ -65,9 +74,11 @@ function Game() {
         onEnter={onEnter}
         gameStatus={gameStatus}
         onChar={onChar}
+        onDelete={onDelete}
       />
 
       {gameStatus === 'won' && (
+        // {true && (
         <Banner status="happy">
           <p>
             <strong>Congratulations!</strong> You got it in{' '}
