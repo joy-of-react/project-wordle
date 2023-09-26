@@ -18,9 +18,9 @@ html {
   --color-gray-900: hsl(0deg 0% 90%);
 }
 
-form {
+/* form {
   margin-bottom: 1.5rem;
-}
+} */
 /*
   Custom styles
 */
@@ -203,15 +203,16 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  height: 6.75rem;
 }
 
 .guess-input-wrapper label {
   font-size: 1.25rem;
+  font-weight: 600;
 }
 
 .guess-input-wrapper input {
-  display: block;
+  /* display: block; */
+  display: flex;
   width: 100%;
   font-size: 2rem;
   border: 2px solid var(--color-gray-300);

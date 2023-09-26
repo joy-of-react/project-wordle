@@ -29,31 +29,26 @@ function GuessInput({ handleSubmitGuess, gameStatus }) {
   };
 
   return (
-    <>
-      <form
-        className="guess-input-wrapper"
-        onSubmit={e => handleSubmit(e)}
+    <form className="guess-input-wrapper" onSubmit={e => handleSubmit(e)}>
+      <label htmlFor="guess-input">Enter guess:</label>
+      <input
+        id="guess-input"
+        type="text"
+        value={tentativeGuess}
+        onChange={e => handleChange(e)}
+        style={{ textTransform: 'uppercase' }}
+        disabled={gameStatus !== 'inGame'}
+        autocomplete="off"
+      />
+      <button
+        className={`btn ${
+          tentativeGuess.length !== 5 ? 'btn-disabled' : ''
+        }`}
+        type="submit"
       >
-        <label htmlFor="guess-input">Enter guess:</label>
-        <input
-          id="guess-input"
-          type="text"
-          value={tentativeGuess}
-          onChange={e => handleChange(e)}
-          style={{ textTransform: 'uppercase' }}
-          disabled={gameStatus !== 'inGame'}
-          autocomplete="off"
-        />
-        <button
-          className={`btn ${
-            tentativeGuess.length !== 5 ? 'btn-disabled' : ''
-          }`}
-          type="submit"
-        >
-          Submit
-        </button>
-      </form>
-    </>
+        Submit
+      </button>
+    </form>
   );
 }
 

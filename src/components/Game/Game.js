@@ -18,6 +18,7 @@ function Game() {
 
   function handleSubmitGuess(tentativeGuess) {
     setWords([...words, tentativeGuess]);
+
     if (tentativeGuess === answer) {
       setGameStatus('won');
     } else if (words.length === NUM_OF_GUESSES_ALLOWED - 1) {
