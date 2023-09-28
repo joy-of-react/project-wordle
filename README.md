@@ -1,5 +1,26 @@
 # Word Game
 
+## Brief Interlude
+
+This is the first project as part of the [Joy of React course](https://courses.joshwcomeau.com/joy-of-react), consisting of 5 exercises. It mostly covered some of the fundamental concepts of React, including forms, state, components, conditional rendering, modularisation, props, iteration, event handling.
+
+I used this project to help refresh my knowledge of React fundamentals, JavaScript logic, and various aspects of web development, such as local development tools (VSCode, command line, Git, NPM, Node, GitHub).
+
+One noteworthy aspect of going through this project was understanding and appreciating (or at least trying to!) this "peculiar" [React file/folder structure](https://www.joshwcomeau.com/react/file-structure/):
+
+```
+src/
+└── components/
+    ├── App/
+    │   ├── App.js
+    │   └── index.js
+    └── Game/
+        ├── Game.js
+        └── index.js
+```
+
+Anyway, back to the provided README text...
+
 ## Joy of React, Project I
 
 In this project, we'll recreate a popular online word game, Wordle:

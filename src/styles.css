@@ -230,3 +230,56 @@ h1 {
     transform: translateY(0%);
   }
 }
+
+/*
+  Stretch goal styles
+*/
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+.keyboard .letter {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 4px;
+  /* cool way to center content */
+  display: grid;
+  place-content: center;
+  /* cool way to center content */
+  background: var(--color-gray-900);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.keyboard .letter.correct {
+  background: var(--color-success);
+  color: white;
+}
+.keyboard .letter.incorrect {
+  background: var(--color-gray-300);
+  color: white;
+}
+.keyboard .letter.misplaced {
+  background: var(--color-warning);
+  color: white;
+}
+
+.banner button {
+  background-color: transparent;
+  margin-top: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 10px 20px;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+.banner button:hover {
+  background-color: #0056b3;
+}
