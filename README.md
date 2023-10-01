@@ -97,30 +97,30 @@ As the user submits guesses, their guess will populate the cells:
 
 ![Screen recording showing each guess being added to the 5x6 grid](docs/words-in-cells.gif)
 
-We need to update our DOM structure for the `GuessResults` component so that it looks something like this:
+Here's the DOM structure you'll want to create dynamically, based on the user's guesses:
 
 ```html
 <div class="guess-results">
   <p class="guess">
-    <span class="cell">F</span>
-    <span class="cell">I</span>
-    <span class="cell">R</span>
-    <span class="cell">S</span>
-    <span class="cell">T</span>
-  </p>
-  <p class="guess">
-    <span class="cell">G</span>
-    <span class="cell">U</span>
+    <span class="cell">H</span>
     <span class="cell">E</span>
-    <span class="cell">S</span>
-    <span class="cell">S</span>
+    <span class="cell">L</span>
+    <span class="cell">L</span>
+    <span class="cell">O</span>
   </p>
   <p class="guess">
-    <span class="cell"></span>
-    <span class="cell"></span>
-    <span class="cell"></span>
-    <span class="cell"></span>
-    <span class="cell"></span>
+    <span class="cell">T</span>
+    <span class="cell">H</span>
+    <span class="cell">E</span>
+    <span class="cell">R</span>
+    <span class="cell">E</span>
+  </p>
+  <p class="guess">
+    <span class="cell">W</span>
+    <span class="cell">O</span>
+    <span class="cell">R</span>
+    <span class="cell">L</span>
+    <span class="cell">D</span>
   </p>
   <p class="guess">
     <span class="cell"></span>
