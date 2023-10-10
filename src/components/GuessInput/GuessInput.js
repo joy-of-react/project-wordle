@@ -3,7 +3,8 @@ import React from "react";
 function GuessInput() {
   const [guess, setGuess] = React.useState("");
 
-  const handleInput = () => {
+  const handleInput = (event) => {
+    event.preventDefault();
     if (guess.length < 1) return;
     console.log("Guess Input: ", guess);
     setGuess("");
@@ -11,10 +12,7 @@ function GuessInput() {
 
   return (
     <form
-      onSubmit={(event) => {
-        event.preventDefault();
-        handleInput();
-      }}
+      onSubmit={(event) => handleInput(event)}
       className="guess-input-wrapper"
     >
       <label htmlFor="guess-input">Enter guess:</label>
