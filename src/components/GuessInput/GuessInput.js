@@ -17,10 +17,12 @@ function GuessInput() {
     >
       <label htmlFor="guess-input">Enter guess:</label>
       <input
+        required
         id="guess-input"
         type="text"
         value={guess}
-        pattern=".{5}"
+        pattern="[a-zA-Z]{5}"
+        title="5 letter word"
         onChange={(event) => setGuess(event.target.value.toUpperCase())}
       ></input>
     </form>
