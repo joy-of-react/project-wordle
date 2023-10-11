@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 
-function GuessInput({ setGuess }) {
+function GuessInput({ words, setWord }) {
   const [inputWord, setInputWord] = useState("");
   const handelSubmit = (e) => {
     e.preventDefault();
-    setGuess(inputWord);
+    const newWord = [...words];
+    newWord.push(inputWord);
+    setWord(newWord);
     setInputWord("");
   };
   return (
@@ -14,9 +16,9 @@ function GuessInput({ setGuess }) {
         id="guess-input"
         type="text"
         required
-        minLength={5}
+        // minLength={5}
         maxLength={5}
-        pattern="\w{5,}\D/g"
+        pattern="\w{5,}"
         value={inputWord}
         onChange={(e) => setInputWord(e.target.value.toUpperCase())}
       />
