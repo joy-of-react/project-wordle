@@ -14,7 +14,7 @@ function Game() {
   const [guessList, setGuessList] = useState([]);
   return (
     <>
-      <GuessList guessList={guessList} />
+      <GuessList guessList={guessList} answer={answer}/>
       <GuessInput words={guessList} setWord={setGuessList} />;
     </>
   );

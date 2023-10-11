@@ -1,11 +1,17 @@
 import React from "react";
 import { range } from "../../utils";
+import { checkGuess } from "../../game-helpers";
 
-function GuessWord({ word }) {
+function GuessWord({ word, answer }) {
+  let status = '';
+  if (word.length) {
+    status = checkGuess(word, answer);
+  }
+
   return (
     <p className="guess">
       {range(0, 5).map((cell, i) => (
-        <span key={i} className="cell">
+        <span key={i} className={`cell ${status && status[i].status}`}>
           {word[i] || ""}
         </span>
       ))}
