@@ -7,7 +7,7 @@ function GuessWord({ word, answer }) {
   if (word.length) {
     status = checkGuess(word, answer);
   }
-
+  console.log(answer);
   return (
     <p className="guess">
       {range(0, 5).map((cell, i) => (
