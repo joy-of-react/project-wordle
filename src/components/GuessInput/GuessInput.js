@@ -1,36 +1,27 @@
 import React, { useState } from "react";
-import Banner from "../Banner/Banner";
-import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 
-function GuessInput({ words, setWord, answer }) {
+function GuessInput({ handleSubmitGuess, gameStatus }) {
   const [inputWord, setInputWord] = useState("");
   const handelSubmit = (e) => {
     e.preventDefault();
-    const newWord = [...words];
-    newWord.push(inputWord);
-    setWord(newWord);
+    handleSubmitGuess(inputWord);
     setInputWord("");
   };
-
-  const win = words.includes(answer);
-  const lose = words.length === NUM_OF_GUESSES_ALLOWED && !win;
-  const isGameIsOver = win || lose;
   return (
     <form className="guess-input-wrapper" onSubmit={(e) => handelSubmit(e)}>
       <label htmlFor="guess-input">Enter guess:</label>
-      {<input
+      <input
         id="guess-input"
         type="text"
         required
-        // minLength={5}
+        disabled={gameStatus !== "running"}
+        minLength={5}
         maxLength={5}
         pattern="\w{5,}"
+        title="5 letter word"
         value={inputWord}
         onChange={(e) => setInputWord(e.target.value.toUpperCase())}
-      />}
-      {isGameIsOver && (
-        <Banner id="guess-input" win={win} guessCount={words.length} answer={answer} />
-      )}
+      />
     </form>
   );
 }
