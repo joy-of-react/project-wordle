@@ -4,17 +4,17 @@ function GuessInput() {
   const [guess, setGuess] = React.useState("");
   return (
     <form
+      className="guess-input-wrapper"
       onSubmit={(e) => {
         e.preventDefault();
         console.log({ guess });
         setGuess("");
       }}
     >
-      <label htmlFor="guess">Enter guess:</label>
-      <br />
+      <label htmlFor="guess-input">Enter guess:</label>
       <input
-        id="guess"
-        name="guess"
+        id="guess-input"
+        name="guess-input"
         type="text"
         value={guess}
         onChange={(e) => {
