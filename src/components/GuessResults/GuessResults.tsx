@@ -2,14 +2,18 @@ import React from "react";
 import Guess from "../Guess";
 import { range } from "../../utils";
 import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
+import { Guess as GuessType } from "../../types";
 
-function GuessResults({ guessResults }) {
+type GuessResultsProps = {
+  guessResults: GuessType[];
+};
+
+function GuessResults({ guessResults }: GuessResultsProps) {
   return (
     <div className="guess-results">
-      {range(NUM_OF_GUESSES_ALLOWED).map((i) => {
+      {range(NUM_OF_GUESSES_ALLOWED).map((i: number) => {
         const { id, guess } = guessResults[i] || {};
         const key = id || i;
-
         return <Guess key={`guess-${key}`} guess={guess} />;
       })}
     </div>

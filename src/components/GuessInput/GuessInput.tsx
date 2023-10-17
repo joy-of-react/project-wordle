@@ -1,13 +1,16 @@
 import React from "react";
 
-function GuessInput({ handleSubmitGuess }) {
+type GuessInputProps = {
+  handleSubmitGuess: (guess: string) => void;
+};
+
+function GuessInput({ handleSubmitGuess }: GuessInputProps) {
   const [guess, setGuess] = React.useState("");
   return (
     <form
       className="guess-input-wrapper"
       onSubmit={(e) => {
         e.preventDefault();
-        console.log({ guess });
         handleSubmitGuess(guess);
         setGuess("");
       }}
