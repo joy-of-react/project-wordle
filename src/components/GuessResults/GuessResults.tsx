@@ -2,19 +2,27 @@ import React from "react";
 import Guess from "../Guess";
 import { range } from "../../utils";
 import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
-import { Guess as GuessType } from "../../types";
+import { CheckedGuesses, GuessResults } from "../../types";
 
 type GuessResultsProps = {
-  guessResults: GuessType[];
+  guessResults: GuessResults;
+  checkedGuesses: CheckedGuesses;
 };
 
-function GuessResults({ guessResults }: GuessResultsProps) {
+function GuessResults({ guessResults, checkedGuesses }: GuessResultsProps) {
   return (
     <div className="guess-results">
       {range(NUM_OF_GUESSES_ALLOWED).map((i: number) => {
         const { id, guess } = guessResults[i] || {};
         const key = id || i;
-        return <Guess key={`guess-${key}`} guess={guess} />;
+
+        return (
+          <Guess
+            key={`guess-${key}`}
+            guess={guess}
+            checkedGuess={checkedGuesses?.[i]}
+          />
+        );
       })}
     </div>
   );
