@@ -4,8 +4,10 @@ import { sample } from "../../utils";
 import { WORDS } from "../../data";
 import GuessInput from "../GuessInput";
 import GuessResults from "../GuessResults";
+import Banner from "../Banner";
 import { CheckedGuesses, Guess } from "../../types";
 import { checkGuess } from "../../game-helpers";
+import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -17,6 +19,7 @@ function Game() {
   const [checkedGuesses, setCheckedGuesses] = React.useState<CheckedGuesses>(
     []
   );
+  const [isWinner, setIsWinner] = React.useState(false);
 
   const handleSubmitGuess = (guess: string) => {
     const nextGuess = {
@@ -28,7 +31,15 @@ function Game() {
 
     const nextCheckedGuesses = [...checkedGuesses, checkGuess(guess, answer)];
     setCheckedGuesses(nextCheckedGuesses);
+
+    setIsWinner(guess === answer);
   };
+
+  const variant = isWinner
+    ? "happy"
+    : !isWinner && guessResults.length >= NUM_OF_GUESSES_ALLOWED
+    ? "sad"
+    : null;
 
   return (
     <>
@@ -37,6 +48,7 @@ function Game() {
         checkedGuesses={checkedGuesses}
       />
       <GuessInput handleSubmitGuess={handleSubmitGuess} />
+      <Banner variant={variant} guessResults={guessResults} answer={answer} />
     </>
   );
 }
