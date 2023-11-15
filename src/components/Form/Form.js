@@ -4,21 +4,23 @@ function Form() {
   const [input, setInput] = React.useState('');
   function guessing(event){
     event.preventDefault();
-    const guess = {
-      guess: input.toUpperCase(),
-    };
+    console.log({input});
     setInput('');
-    console.log(guess);
   }
   return(
-    <form className='guess-input-wrapper' onSubmit={() => guessing(event)}>
+    <form className='guess-input-wrapper' onSubmit={guessing}>
       <label htmlFor='guess-input'>Enter Guess:</label>
-      <input 
+      <input
+        required
+        minLength={5}
+        maxLength={5}
+        pattern="[a-zA-Z]{5}"
+        title="5 letter word"
         id='guess-input'
         type='text'
         value={input}
         onChange={(event) => (
-            setInput(event.target.value)
+            setInput(event.target.value.toUpperCase())
         )}
       />
     </form>
