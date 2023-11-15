@@ -1,11 +1,11 @@
 import React from 'react';
 
-function Form() {
-  const [input, setInput] = React.useState('');
+function Form({ handleSubmitGuess }) {
+  const [tentativeGuess, setTentativeGuess] = React.useState('');
   function guessing(event){
     event.preventDefault();
-    console.log({input});
-    setInput('');
+    handleSubmitGuess(tentativeGuess);
+    setTentativeGuess('');
   }
   return(
     <form className='guess-input-wrapper' onSubmit={guessing}>
@@ -18,9 +18,9 @@ function Form() {
         title="5 letter word"
         id='guess-input'
         type='text'
-        value={input}
+        value={tentativeGuess}
         onChange={(event) => (
-            setInput(event.target.value.toUpperCase())
+            setTentativeGuess(event.target.value.toUpperCase())
         )}
       />
     </form>
