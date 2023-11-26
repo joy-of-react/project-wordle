@@ -13,6 +13,8 @@ const answer = sample(WORDS);
 // To make debugging easier, we'll log the solution in the console.
 console.info({ answer });
 
+
+
 function Game() {
   const [listOfGuesses, setListOfGuesses] = React.useState([]);
 
@@ -22,9 +24,9 @@ function Game() {
   }
   return (
     <>
-      <GuessList list={listOfGuesses} />
+      <GuessList list={listOfGuesses} answer={answer} />
 
-      <GuessInput handleSubmitGuess={handleSubmitGuess} />;
+      <GuessInput handleSubmitGuess={handleSubmitGuess} />
 
     </>
 
