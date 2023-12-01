@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { WORD_LENGTH } from '../../constants';
+
 function InputForm({ handleAddGuess }) {
   const [guess, setGuess] = React.useState('');
   return (
@@ -22,8 +24,8 @@ function InputForm({ handleAddGuess }) {
             const upperCaseEntry = event.target.value.toUpperCase();
             setGuess(upperCaseEntry);
           }}
-          pattern="[A-Za-z]{5}"
-          title='Please enter a 5 letter word'
+          pattern={`[A-Za-z]{${WORD_LENGTH}}`}
+          title={`${WORD_LENGTH} letter word`}
         />
       </form>
     </>
