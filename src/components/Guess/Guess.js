@@ -1,16 +1,17 @@
 import React from 'react';
 
+import { range } from '../../utils';
+import { WORD_LENGTH } from '../../constants';
+
 function Guess({ guess }) {
-  const letterArray = guess.split('');
-  const letterWithId = letterArray.map((letter) => {
-    return {letter, id: crypto.randomUUID()}
-  });
 
   return (
     <>
-      {letterWithId.map(({ letter, id }) => {
-        return <span className="cell" key={id}>{letter}</span>
-      })}
+      <p className="guess">
+        {range(WORD_LENGTH).map(num => {
+          return <span key={num} className="cell">{guess ? guess[num] : undefined}</span>
+        })}
+      </p>
     </>
   );
 }
