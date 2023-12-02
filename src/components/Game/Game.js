@@ -23,7 +23,7 @@ function Game() {
 
   return (
     <>
-      <GuessResults guessArray={guessArray}/>
+      <GuessResults guessArray={guessArray} answer={answer}/>
       <ImportForm handleAddGuess={handleAddGuess}/>
     </>
   );
