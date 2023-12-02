@@ -4,7 +4,8 @@ import { sample } from '../../utils';
 import { WORDS } from '../../data';
 import ImportForm from '../InputForm/InputForm';
 import GuessResults from '../GuessResults/GuessResults';
-import Banner from '../Banner/Banner';
+import WinBanner from '../WinBanner/WinBanner';
+import LoseBanner from '../LoseBanner/LoseBanner';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
 
 // Pick a random word on every pageload.
@@ -33,8 +34,8 @@ function Game() {
     <>
       <GuessResults guessArray={guessArray} answer={answer}/>
       <ImportForm handleAddGuess={handleAddGuess} status={status}/>
-      {status === "win" && <Banner variant='happy'>Win</Banner>}
-      {status === "lose" && <Banner variant='sad'>Lose</Banner>}
+      {status === "win" && <WinBanner guessArray={guessArray}/>}
+      {status === "lose" && <LoseBanner answer={answer}/>}
     </>
   );
 }
