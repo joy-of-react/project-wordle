@@ -2,7 +2,7 @@ import React from 'react';
 
 import { WORD_LENGTH } from '../../constants';
 
-function InputForm({ handleAddGuess }) {
+function InputForm({ handleAddGuess, status }) {
   const [guess, setGuess] = React.useState('');
   return (
     <>
@@ -26,6 +26,7 @@ function InputForm({ handleAddGuess }) {
           }}
           pattern={`[A-Za-z]{${WORD_LENGTH}}`}
           title={`${WORD_LENGTH} letter word`}
+          disabled={status !== "in progress"}
         />
       </form>
     </>
