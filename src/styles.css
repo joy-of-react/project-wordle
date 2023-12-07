@@ -107,6 +107,25 @@ h1 {
     font-size: 2rem;
 }
 
+.keyboard-wrapper {
+    place-content: center;
+}
+
+.keyboard-key {
+    position: relative;
+    width: 35px;
+    aspect-ratio: 1 / 1.2;
+    display: grid;
+    place-content: center;
+    border: 2px solid var(--color-gray-700);
+    border-radius: 4px 4px 4px 4px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    background: var(--color-gray-900);
+    border-color: var(--color-gray-900);
+    color: black;
+}
+
 /*
   Round the corners for the 4 cells at the very corners of
   the game board
@@ -127,19 +146,19 @@ h1 {
     --radius: 0px 0px 0px 4px;
 }
 
-.cell.correct {
+.correct {
     background: var(--color-success);
     border-color: var(--color-success);
     color: white;
 }
 
-.cell.incorrect {
+.incorrect {
     background: var(--color-gray-300);
     border-color: var(--color-gray-300);
     color: white;
 }
 
-.cell.misplaced {
+.misplaced {
     background: var(--color-warning);
     border-color: var(--color-warning);
     color: white;
