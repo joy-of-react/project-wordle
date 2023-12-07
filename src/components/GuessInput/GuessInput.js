@@ -1,11 +1,10 @@
 import React from 'react';
 import {NUM_OF_LETTERS_ALLOWED} from "../../constants";
 
-function GuessInput({addNewGuess, disabled}) {
-    const [guess, setGuess] = React.useState('');
+function GuessInput({addNewGuess, disabled, guess, setGuess}) {
     return (
         <form
-            // id="guess-input-wrapper"
+            id="guess-input-form"
             className="guess-input-wrapper"
             onSubmit={(event) => {
                 addNewGuess(guess);
