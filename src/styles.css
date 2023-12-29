@@ -114,12 +114,15 @@ h1 {
 .guess:first-of-type .cell:first-of-type {
   --radius: 4px 0px 0px 0px;
 }
+
 .guess:first-of-type .cell:last-of-type {
   --radius: 0px 4px 0px 0px;
 }
+
 .guess:last-of-type .cell:last-of-type {
   --radius: 0px 0px 4px 0px;
 }
+
 .guess:last-of-type .cell:first-of-type {
   --radius: 0px 0px 0px 4px;
 }
@@ -129,11 +132,13 @@ h1 {
   border-color: var(--color-success);
   color: white;
 }
+
 .cell.incorrect {
   background: var(--color-gray-300);
   border-color: var(--color-gray-300);
   color: white;
 }
+
 .cell.misplaced {
   background: var(--color-warning);
   border-color: var(--color-warning);
@@ -159,6 +164,7 @@ h1 {
   border-radius: 4px;
   padding: 8px 16px;
   outline-offset: 4px;
+  outline: none;
 }
 
 .banner {
@@ -180,6 +186,7 @@ h1 {
   background: var(--color-success);
   color: white;
 }
+
 .sad.banner {
   background: var(--color-error);
   color: white;
@@ -208,6 +215,7 @@ h1 {
   border-radius: 8px;
   padding: 24px 32px;
 }
+
 .modal-close-btn {
   position: absolute;
   top: 0;
@@ -215,6 +223,7 @@ h1 {
   padding: 16px;
   cursor: pointer;
 }
+
 .modal-title {
   margin-bottom: 0.5em;
 }
@@ -226,6 +235,7 @@ h1 {
   from {
     transform: translateY(100%);
   }
+
   to {
     transform: translateY(0%);
   }
