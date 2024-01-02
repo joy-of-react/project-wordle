@@ -1,15 +1,19 @@
-import React, { useState } from 'react'
+import React from 'react';
 
-const Input = () => {
-  const [inputValue, setInputValue] = useState('');
-
+const Input = ({ inputValue, setInputValue, words, setWords }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (inputValue.length !== 5) {
       alert('The word must be equal to 5 letters');
       return;
     };
-
+    setWords([
+      ...words,
+      {
+        id: crypto.randomUUID(),
+        value: inputValue
+      }
+    ]);
     console.log({ inputValue });
     setInputValue('');
   };
