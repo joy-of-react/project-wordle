@@ -1,21 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Input = ({ inputValue, setInputValue, words, setWords }) => {
+const Input = ({ handleSaveWord }) => {
+  const [tentativeGuess, setTentativeGuess] = useState('');
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (inputValue.length !== 5) {
+    if (tentativeGuess.length !== 5) {
       alert('The word must be equal to 5 letters');
       return;
     };
-    setWords([
-      ...words,
-      {
-        id: crypto.randomUUID(),
-        value: inputValue
-      }
-    ]);
-    console.log({ inputValue });
-    setInputValue('');
+
+    const newWord = {
+      id: crypto.randomUUID(),
+      value: tentativeGuess
+    }
+
+    handleSaveWord(newWord);
+    console.log({ tentativeGuess });
+    setTentativeGuess('');
   };
 
   return (
@@ -28,9 +30,9 @@ const Input = ({ inputValue, setInputValue, words, setWords }) => {
         required
         id='guess-input'
         type='text'
-        value={inputValue}
+        value={tentativeGuess}
         onChange={event => {
-          setInputValue(event.target.value.toUpperCase())
+          setTentativeGuess(event.target.value.toUpperCase())
         }}
       />
     </form>
