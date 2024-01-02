@@ -6,7 +6,7 @@ function PreviousWord({ words }) {
       {words.map(({ id, value }) => {
         return (
           <p
-            className='guess'
+            className="guess"
             key={id}
           >
             {value}
