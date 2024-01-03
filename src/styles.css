@@ -4,7 +4,7 @@
 html {
   overflow-y: scroll;
 
-  --game-spacing: 32px;
+  --game-spacing: 20px;
   --header-height: 4rem;
 
   --color-success: hsl(150deg 70% 30%);
@@ -77,17 +77,16 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: var(--game-spacing);
-  padding: var(--game-spacing) 32px;
+  padding: var(--game-spacing) 15px;
   margin: 0 auto;
   min-width: 250px;
   max-width: min(500px, 58vh, 100%);
 }
 
 .guess-results {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .guess {
