@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Input = ({ handleSaveWord }) => {
+const Input = ({ handleSaveWord, isOver }) => {
   const [tentativeGuess, setTentativeGuess] = useState('');
 
   const handleSubmit = (e) => {
@@ -29,6 +29,7 @@ const Input = ({ handleSaveWord }) => {
         required
         id='guess-input'
         type='text'
+        disabled={isOver}
         value={tentativeGuess}
         onChange={event => {
           setTentativeGuess(event.target.value.toUpperCase())
