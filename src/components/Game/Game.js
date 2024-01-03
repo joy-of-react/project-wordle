@@ -19,7 +19,7 @@ function Game() {
 
   return (
     <>
-      <PreviousWord words={words} />
+      <PreviousWord words={words} answer={answer} />
       <Input handleSaveWord={handleSaveWord} />
     </>
   );
