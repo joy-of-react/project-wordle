@@ -16,7 +16,6 @@ const Input = ({ handleSaveWord }) => {
     }
 
     handleSaveWord(newWord);
-    console.log({ tentativeGuess });
     setTentativeGuess('');
   };
 
