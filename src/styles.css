@@ -227,6 +227,14 @@ h1 {
   margin-bottom: 0.5em;
 }
 
+.restart {
+  text-align: center;
+  padding: 10px 15px;
+  background-color: var(--color-gray-300);
+  color: #fff;
+  border-radius: var(--radius);
+}
+
 /*
   Keyframe animations
 */
