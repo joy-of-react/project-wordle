@@ -30,6 +30,14 @@ function Game() {
     }
   };
 
+  const handleResetGame = () => {
+    const newGame = [];
+
+    setWords(newGame);
+    setIsOver(false);
+    window.location.reload();
+  };
+
   return (
     <>
       <PreviousWord
@@ -40,6 +48,12 @@ function Game() {
         handleSaveWord={handleSaveWord}
         isOver={isOver}
       />
+      <button
+        className='restart'
+        onClick={handleResetGame}
+      >
+        Restart
+      </button>
       {isOver ?
         <Banner
           isWinner={isWinner}
