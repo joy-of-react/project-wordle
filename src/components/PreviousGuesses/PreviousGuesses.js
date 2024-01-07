@@ -1,5 +1,3 @@
-import React from 'react';
-
 function PreviousGuesses({ guesses }) {
   return (
     <div className="guess-results">

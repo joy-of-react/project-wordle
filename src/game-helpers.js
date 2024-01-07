@@ -22,7 +22,7 @@ export function checkGuess(guess, answer) {
     if (guessChars[i] === answerChars[i]) {
       result[i] = {
         letter: guessChars[i],
-        status: 'correct',
+        status: 'correct'
       };
       answerChars[i] = SOLVED_CHAR;
       guessChars[i] = SOLVED_CHAR;
@@ -47,7 +47,7 @@ export function checkGuess(guess, answer) {
 
     result[i] = {
       letter: guessChars[i],
-      status,
+      status
     };
   }
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { KEYBOARD_KEYS } from '../../data';
 
 function Keyboard({ guessedLetters }) {

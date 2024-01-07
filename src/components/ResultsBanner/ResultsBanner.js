@@ -1,5 +1,3 @@
-import React from 'react';
-
 function ResultsBanner({ answer, gameResult, numOfGuesses, resetGame }) {
   const pluralGuesses = numOfGuesses > 1;
   return gameResult === 'win' ? (

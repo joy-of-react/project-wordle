@@ -1,10 +1,8 @@
-import React from 'react';
 import { range } from '../../utils';
 import { NUM_OF_GUESSES_ALLOWED, LETTERS_PER_WORD } from '../../constants';
 import { checkGuess } from '../../game-helpers';
 
 function Guess({ answer, guesses }) {
-  // TODO: might want to give the rows and columns different indexes?
   const rows = range(0, NUM_OF_GUESSES_ALLOWED);
 
   return (
