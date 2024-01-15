@@ -36,8 +36,11 @@ Here's a minimal representation of the markup expected to be produced by this ne
 
 ```html
 <form class="guess-input-wrapper">
-  <label for="guess-input">Enter guess:</label>
-  <input id="guess-input" type="text" />
+	<label for="guess-input">Enter guess:</label>
+	<input
+		id="guess-input"
+		type="text"
+	/>
 </form>
 ```
 
@@ -74,8 +77,8 @@ And here's an example of the expected DOM structure:
 
 ```html
 <div class="guess-results">
-  <p class="guess">FIRST</p>
-  <p class="guess">GUESS</p>
+	<p class="guess">FIRST</p>
+	<p class="guess">GUESS</p>
 </div>
 ```
 
@@ -101,41 +104,41 @@ Here's the DOM structure you'll want to create dynamically, based on the user's 
 
 ```html
 <div class="guess-results">
-  <p class="guess">
-    <span class="cell">H</span>
-    <span class="cell">E</span>
-    <span class="cell">L</span>
-    <span class="cell">L</span>
-    <span class="cell">O</span>
-  </p>
-  <p class="guess">
-    <span class="cell">T</span>
-    <span class="cell">H</span>
-    <span class="cell">E</span>
-    <span class="cell">R</span>
-    <span class="cell">E</span>
-  </p>
-  <p class="guess">
-    <span class="cell">W</span>
-    <span class="cell">O</span>
-    <span class="cell">R</span>
-    <span class="cell">L</span>
-    <span class="cell">D</span>
-  </p>
-  <p class="guess">
-    <span class="cell"></span>
-    <span class="cell"></span>
-    <span class="cell"></span>
-    <span class="cell"></span>
-    <span class="cell"></span>
-  </p>
-  <p class="guess">
-    <span class="cell"></span>
-    <span class="cell"></span>
-    <span class="cell"></span>
-    <span class="cell"></span>
-    <span class="cell"></span>
-  </p>
+	<p class="guess">
+		<span class="cell">H</span>
+		<span class="cell">E</span>
+		<span class="cell">L</span>
+		<span class="cell">L</span>
+		<span class="cell">O</span>
+	</p>
+	<p class="guess">
+		<span class="cell">T</span>
+		<span class="cell">H</span>
+		<span class="cell">E</span>
+		<span class="cell">R</span>
+		<span class="cell">E</span>
+	</p>
+	<p class="guess">
+		<span class="cell">W</span>
+		<span class="cell">O</span>
+		<span class="cell">R</span>
+		<span class="cell">L</span>
+		<span class="cell">D</span>
+	</p>
+	<p class="guess">
+		<span class="cell"></span>
+		<span class="cell"></span>
+		<span class="cell"></span>
+		<span class="cell"></span>
+		<span class="cell"></span>
+	</p>
+	<p class="guess">
+		<span class="cell"></span>
+		<span class="cell"></span>
+		<span class="cell"></span>
+		<span class="cell"></span>
+		<span class="cell"></span>
+	</p>
 </div>
 ```
 
@@ -167,7 +170,7 @@ Inside `/src/game-helpers.js`, you'll find a helper function, `checkGuess`. As p
 For example:
 
 ```js
-checkGuess('WHALE', 'LEARN');
+checkGuess("WHALE", "LEARN");
 /*
   Returns:
 
@@ -195,11 +198,11 @@ Your task is to use this function to validate the user's guesses, and apply the 
 
 ```html
 <p class="guess">
-  <span class="cell incorrect">W</span>
-  <span class="cell incorrect">H</span>
-  <span class="cell correct">A</span>
-  <span class="cell misplaced">L</span>
-  <span class="cell misplaced">E</span>
+	<span class="cell incorrect">W</span>
+	<span class="cell incorrect">H</span>
+	<span class="cell correct">A</span>
+	<span class="cell misplaced">L</span>
+	<span class="cell misplaced">E</span>
 </p>
 ```
 
@@ -225,16 +228,13 @@ The user wins the game when their guessed word is identical to the `answer`. The
 
 ```html
 <div class="happy banner">
-  <p>
-    <strong>Congratulations!</strong> Got it in
-    <strong>3 guesses</strong>.
-  </p>
+	<p><strong>Congratulations!</strong> Got it in <strong>3 guesses</strong>.</p>
 </div>
 ```
 
 ```html
 <div class="sad banner">
-  <p>Sorry, the correct answer is <strong>LEARN</strong>.</p>
+	<p>Sorry, the correct answer is <strong>LEARN</strong>.</p>
 </div>
 ```
 
