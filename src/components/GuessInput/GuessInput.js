@@ -16,7 +16,7 @@ function GuessInput({ handleSubmitGuess }) {
 			onSubmit={handleSubmit}
 			className="guess-input-wrapper"
 		>
-			<label htmlFor="guess-input">Enter guess:</label>
+			<label htmlFor="guess-input">Enter guess (5 letter word):</label>
 			<input
 				id="guess-input"
 				type="text"
