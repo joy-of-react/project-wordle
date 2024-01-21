@@ -1,6 +1,6 @@
 import React from "react";
 
-function GuessInput({ handleSubmitGuess }) {
+function GuessInput({ handleSubmitGuess, isDisabled }) {
 	const [tentativeGuess, setTentativeGuess] = React.useState("");
 
 	function handleSubmit(event) {
@@ -16,7 +16,7 @@ function GuessInput({ handleSubmitGuess }) {
 			onSubmit={handleSubmit}
 			className="guess-input-wrapper"
 		>
-			<label htmlFor="guess-input">Enter guess (5 letter word):</label>
+			<label htmlFor="guess-input">Enter guess (5&nbsp;letter word):</label>
 			<input
 				id="guess-input"
 				type="text"
@@ -27,6 +27,7 @@ function GuessInput({ handleSubmitGuess }) {
 				maxLength={5}
 				pattern="[a-zA-Z]{5}"
 				title="5 letter word"
+				disabled={isDisabled}
 			/>
 		</form>
 	);
