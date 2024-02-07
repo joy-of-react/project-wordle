@@ -22,6 +22,9 @@
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "devDependencies": {
-    "@biomejs/biome": "^1.5.3"
+    "@biomejs/biome": "^1.5.3",
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.18",
+    "typescript": "^5.3.3"
   }
 }
