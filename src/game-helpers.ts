@@ -3,7 +3,7 @@
  * solving algorithm!
  */
 
-export function checkGuess(guess, answer) {
+export function checkGuess(guess: string, answer: string) {
   // This constant is a placeholder that indicates we've successfully
   // dealt with this character (it's correct, or misplaced).
   const SOLVED_CHAR = '✓';
