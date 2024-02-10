@@ -1,5 +1,12 @@
 {
-	"printWidth": 999999,
 	"singleAttributePerLine": true,
-	"useTabs": true
+	"useTabs": true,
+	"overrides": [
+		{
+			"files": ["*.html", "*.css"],
+			"options": {
+				"printWidth": 999999
+			}
+		}
+	]
 }

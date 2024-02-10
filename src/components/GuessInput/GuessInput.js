@@ -21,7 +21,9 @@ function GuessInput({ handleSubmitGuess, isDisabled }) {
 				id="guess-input"
 				type="text"
 				value={tentativeGuess}
-				onChange={(event) => setTentativeGuess(event.target.value.toUpperCase())}
+				onChange={(event) =>
+					setTentativeGuess(event.target.value.toUpperCase())
+				}
 				required
 				minLength={5}
 				maxLength={5}
