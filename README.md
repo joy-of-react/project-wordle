@@ -1,5 +1,7 @@
 # Word Game
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3f302af0-844c-4385-8466-c2519d942dcb/deploy-status)](https://app.netlify.com/sites/germanfrelo-wordle/deploys)
+
 ## Joy of React, Project I
 
 In this project, we'll recreate a popular online word game, Wordle:
