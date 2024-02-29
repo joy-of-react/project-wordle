@@ -1,14 +1,4 @@
 import React from 'react'
-// function wordSend(input) {
-//   const word = {
-//     guess: input.toUpperCase(),
-//     id: crypto.randomUUID()
-//   }
-//   return word;
-// }
-
-
-
 
 function Input({handleSubmitGuess}) {
   const [tentativeGuess, setTentativeGuess] = React.useState('');
