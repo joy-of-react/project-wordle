@@ -1,0 +1,7 @@
+# Development
+**/.git
+**/node_modules
+
+# Production
+**/dist*/
+**/build*/

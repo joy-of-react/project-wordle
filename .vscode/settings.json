@@ -1,0 +1,44 @@
+{
+    "files.eol": "\n",
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.fontLigatures": true,
+    "eslint.format.enable": true,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": { "source.fixAll.eslint": "explicit" },
+    "editor.stickyScroll.enabled": true,
+    "editor.stickyScroll.defaultModel": "foldingProviderModel",
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.tree.enableStickyScroll": true,
+
+    // ESLint
+    "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "html"],
+    "eslint.workingDirectories": [{ "mode": "auto" }],
+
+    // Prettier
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[html]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+    "[css]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+    "[less]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+    "[scss]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+    "[jsx]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+    "[tsx]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+    "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+    "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+    "[javascriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+    "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+    "[vue]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+    "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+    "[xml]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+    "[yaml]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+    "[markdown]": { "editor.formatOnSave": false },
+    "[mdx]": { "editor.formatOnSave": false },
+
+    // Stylelint
+    "css.validate": false,
+    "less.validate": false,
+    "scss.validate": false,
+    "stylelint.validate": ["css", "scss", "sass", "less", "postcss"]
+}

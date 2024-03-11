@@ -1,0 +1,9 @@
+.button {
+    position: fixed;
+    inset: 0;
+    block-size: 2rem;
+    inline-size: 5rem;
+    margin: auto;
+    cursor: pointer;
+    user-select: none;
+}

@@ -1,0 +1,11 @@
+# Development
+**/.git
+**/node_modules
+
+# Production
+**/dist*/
+**/build*/
+
+# Markdown
+**/*.md
+**/*.mdx

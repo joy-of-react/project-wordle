@@ -1,0 +1,9 @@
+plugins:
+    tailwindcss: {}
+
+    # 参数: https://github.com/postcss/autoprefixer#features
+    autoprefixer: {}
+
+    # 注意: 如果你使用了某些处于不稳定状态的特性（比如nesting-rules，它正处于state 2），那么你就有重写的风险，你可以通过cssdb来查询所有CSS特性的推进进度
+    # 特性: 你可以从这里找到该插件所支持的所有特性 https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/FEATURES.md
+    postcss-preset-env: {}
