@@ -1,14 +1,17 @@
 import React from 'react';
 import { range } from '../../utils';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
+import { checkGuess} from '../../game-helpers';
 
-function UserGuesses({ guesses }) {
-  const guessesArray = range(NUM_OF_GUESSES_ALLOWED - 1).fill([]).map((_, index) => {
-    return guesses[index] || ['', '', '', '', ''];
+function UserGuesses({ guesses, answer }) {
+  let guessesResult = guesses.map((guess) => checkGuess(guess, answer));
+  const emptySlots = Array(5).fill({letter: '', status: ''});
+
+  let guessesArray = range(NUM_OF_GUESSES_ALLOWED).fill([]).map((_, index) => {
+    return guessesResult[index] || [ ...emptySlots ];
   });
 
   const randonIndex = () => (Math.random());
-
 
   return (
     <>
@@ -16,8 +19,8 @@ function UserGuesses({ guesses }) {
       <div className='guess-results'>
         {guessesArray.map((guess) => (
           <p className='guess' key={randonIndex()}>
-            {Array.from(guess).map((letter) => (
-              <span className='cell' key={randonIndex()}>
+            {guess.map(( {letter, status} ) => (
+              <span className={`cell ${status}`} key={randonIndex()}>
                 {letter}
               </span>
               ))}
