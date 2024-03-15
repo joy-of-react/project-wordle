@@ -1,6 +1,6 @@
 import React from 'react';
 
-function UserInput({ guesses, setGuesses }) {
+function UserInput({ guesses, setGuesses, gameResult }) {
   const [guess, setGuess] = React.useState('');
 
   const handleChange = (event) => {
@@ -9,7 +9,6 @@ function UserInput({ guesses, setGuesses }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(guess);
 
     const newGuesses = [...guesses];
 
@@ -18,6 +17,13 @@ function UserInput({ guesses, setGuesses }) {
     setGuesses(newGuesses);
 
     setGuess('');
+  }
+
+  const stopPlaying = () => {
+    if (gameResult || guesses.length === 6) {
+      return true;
+    }
+    return false;
   }
 
   return (
@@ -32,6 +38,7 @@ function UserInput({ guesses, setGuesses }) {
         value={guess} 
         pattern='\w{5}'
         onChange={handleChange} 
+        disabled={stopPlaying()}
         required
       />
     </form>

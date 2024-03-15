@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { range } from '../../utils';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
 import { checkGuess} from '../../game-helpers';
 
-function UserGuesses({ guesses, answer }) {
+function UserGuesses({ guesses, answer, finishGame }) {
   let guessesResult = guesses.map((guess) => checkGuess(guess, answer));
+  
   const emptySlots = Array(5).fill({letter: '', status: ''});
 
   let guessesArray = range(NUM_OF_GUESSES_ALLOWED).fill([]).map((_, index) => {
@@ -12,6 +13,21 @@ function UserGuesses({ guesses, answer }) {
   });
 
   const randonIndex = () => (Math.random());
+
+  function checkIfWon(guesses) {
+    const hasWon = guesses.filter(guess => (
+      guess.every(letter => letter.status === 'correct')
+    ));
+    
+    // hasWon.length > 0 ? finishGame('win') : null;
+    return hasWon.length > 0;
+  }
+
+  useEffect(() => {
+    if (checkIfWon(guessesResult)) {
+      finishGame('win');
+    }
+  }, [guessesResult, finishGame]);
 
   return (
     <>
