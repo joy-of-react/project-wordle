@@ -44,7 +44,13 @@ function Input({ enabled, guess }: { enabled: boolean; guess: (word: string) => 
     }
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-        setWord(event.target.value.toUpperCase());
+        const str = event.target.value.toUpperCase();
+        const lastLetter = str.at(-1);
+
+        if (!lastLetter) return void setWord(str);
+        if (!'QWERTYUIOPASDFGHJKLZXCVBNM'.includes(lastLetter)) return;
+
+        setWord(str);
     }
 }
 
