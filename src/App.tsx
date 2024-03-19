@@ -24,16 +24,17 @@ function App() {
         <div className="flex h-dvh  flex-col items-center justify-center gap-4 [@media(width<=360px)]:scale-50 [@media(width<=450px)]:scale-cust-2">
             <Chessboard gridData={gridData} />
             <Keyboard keycodeData={keycodeData} />
-            {gameStatus === 'playing' ? (
-                <Input guess={guess} enabled={gameStatus === 'playing'} />
-            ) : (
-                <Banner status={gameStatus} answer={answer} />
-            )}
+            <Input guess={guess} enabled={gameStatus === 'playing'} />
+            {gameStatus !== 'playing' && <Banner status={gameStatus} answer={answer} reset={reset} />}
         </div>
     );
 
     function guess(word: string) {
         setHistory([...history, word]);
+    }
+
+    function reset() {
+        setHistory([]);
     }
 }
 
