@@ -7,7 +7,7 @@ import { checkGuess } from '../../game-helpers';
 function Cell({letter, status}) {
   const className = status ?
   `cell ${status}` :
-  `cell`;
+  `celll`;
   return<span className={className}>{letter}</span>
 }
 
