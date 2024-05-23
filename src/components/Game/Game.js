@@ -10,9 +10,23 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
+  const [ userGuesses, setUserGuesses ] = React.useState([]);
+
+  function handleAddNewGuess(guess) {
+    // Add the guess to the list of guesses.
+    setUserGuesses([ ...userGuesses, guess ]);
+  }
+
   return (
     <>
-      <GuessInput />
+      <div className="guess-results">
+        {userGuesses.map((guess, index) => (
+          <p className="guess" key={index}>
+            {guess}
+          </p>
+        ))}
+      </div>
+      <GuessInput onAddNewGuess={handleAddNewGuess} />
     </>
   );
 }
