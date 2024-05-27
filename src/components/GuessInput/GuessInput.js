@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function GuessInput({handleGuessList}) {
+function GuessInput({handleGuessList, gameStatus}) {
   const [guess , setGuess ] = React.useState('');
  
   function handleGuessText(event) {
@@ -20,6 +20,7 @@ function GuessInput({handleGuessList}) {
           required 
           minLength={5}
           maxLength={5}
+          disabled={gameStatus != 'running'}
         />
     </form>
   </div>;
