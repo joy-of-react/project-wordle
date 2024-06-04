@@ -38,7 +38,7 @@ export function checkGuess(guess, answer) {
 
 		let status = "incorrect";
 		const misplacedIndex = answerChars.findIndex(
-			(char) => char === guessChars[i]
+			(char) => char === guessChars[i],
 		);
 		if (misplacedIndex >= 0) {
 			status = "misplaced";
