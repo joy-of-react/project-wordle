@@ -15,7 +15,13 @@ function Guess({ guesses }) {
     <div>
       {range(NUM_OF_GUESSES_ALLOWED).map((index) => (
         <p className="guess" key={index}>
-          {cell}
+          {guesses.map((guess) =>
+            guess.split("").map((charOfGuess, index) => (
+              <span class="cell" key={index}>
+                {charOfGuess}
+              </span>
+            ))
+          )}
         </p>
       ))}
     </div>
