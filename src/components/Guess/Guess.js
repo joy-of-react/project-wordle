@@ -3,7 +3,6 @@ import React from "react";
 import { range } from "../../utils";
 
 function Guess({ value }) {
-
   return (
     // <div>
     //   {range(NUM_OF_GUESSES_ALLOWED).map((rowIndex) => (
@@ -21,12 +20,11 @@ function Guess({ value }) {
     //   ))}
     // </div>
     <p className="guess">
-      {value ? value.split("").map((char, index) => (
-        <span className="cell" key={index}>{char}</span>
-      )) : range(5).map(cellIndex => (
-        <span className="cell" key={cellIndex}></span>
-      ))
-      }
+      {range(5).map((index) => (
+        <span className="cell" key={index}>
+          {value ? value[index] : undefined}
+        </span>
+      ))}
     </p>
   );
 }
