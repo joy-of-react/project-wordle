@@ -5,6 +5,7 @@ function GuessField({ handleSubmitGuesses }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     handleSubmitGuesses(guess);
+    setGuess("");
   };
 
   return (

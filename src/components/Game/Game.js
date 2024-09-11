@@ -12,7 +12,6 @@ console.info({ answer });
 
 function Game() {
   const [guesses, setGuesses] = useState([]);
-  const [previousGuesses, setPreviousGuesses] = useState([]);
   function handleSubmitGuesses(guess) {
     setGuesses([...guesses, guess]);
   }
