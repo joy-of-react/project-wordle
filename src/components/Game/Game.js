@@ -11,17 +11,15 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-  const [guess, setGuess] = useState("");
+  const [guesses, setGuesses] = useState([]);
   const [previousGuesses, setPreviousGuesses] = useState([]);
+  function handleSubmitGuesses(guess) {
+    setGuesses([...guesses, guess]);
+  }
   return (
     <div>
-      <GuessList previousGuesses={previousGuesses} />
-      <GuessField
-        guess={guess}
-        previousGuesses={previousGuesses}
-        setGuess={setGuess}
-        setPreviousGuesses={setPreviousGuesses}
-      />
+      <GuessList previousGuesses={guesses} />
+      <GuessField handleSubmitGuesses={handleSubmitGuesses} />
     </div>
   );
 }
