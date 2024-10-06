@@ -159,6 +159,7 @@ h1 {
   border-radius: 4px;
   padding: 8px 16px;
   outline-offset: 4px;
+  text-transform: uppercase;
 }
 
 .banner {
