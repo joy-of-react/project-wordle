@@ -4,7 +4,7 @@
 html {
   overflow-y: scroll;
 
-  --game-spacing: 32px;
+  --game-spacing: 20px;
   --header-height: 4rem;
 
   --color-success: hsl(150deg 70% 30%);
@@ -77,17 +77,16 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: var(--game-spacing);
-  padding: var(--game-spacing) 32px;
+  padding: var(--game-spacing) 15px;
   margin: 0 auto;
   min-width: 250px;
   max-width: min(500px, 58vh, 100%);
 }
 
 .guess-results {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .guess {
@@ -114,12 +113,15 @@ h1 {
 .guess:first-of-type .cell:first-of-type {
   --radius: 4px 0px 0px 0px;
 }
+
 .guess:first-of-type .cell:last-of-type {
   --radius: 0px 4px 0px 0px;
 }
+
 .guess:last-of-type .cell:last-of-type {
   --radius: 0px 0px 4px 0px;
 }
+
 .guess:last-of-type .cell:first-of-type {
   --radius: 0px 0px 0px 4px;
 }
@@ -129,11 +131,13 @@ h1 {
   border-color: var(--color-success);
   color: white;
 }
+
 .cell.incorrect {
   background: var(--color-gray-300);
   border-color: var(--color-gray-300);
   color: white;
 }
+
 .cell.misplaced {
   background: var(--color-warning);
   border-color: var(--color-warning);
@@ -159,6 +163,7 @@ h1 {
   border-radius: 4px;
   padding: 8px 16px;
   outline-offset: 4px;
+  outline: none;
 }
 
 .banner {
@@ -180,6 +185,7 @@ h1 {
   background: var(--color-success);
   color: white;
 }
+
 .sad.banner {
   background: var(--color-error);
   color: white;
@@ -208,6 +214,7 @@ h1 {
   border-radius: 8px;
   padding: 24px 32px;
 }
+
 .modal-close-btn {
   position: absolute;
   top: 0;
@@ -215,8 +222,17 @@ h1 {
   padding: 16px;
   cursor: pointer;
 }
+
 .modal-title {
   margin-bottom: 0.5em;
+}
+
+.restart {
+  text-align: center;
+  padding: 10px 15px;
+  background-color: var(--color-gray-300);
+  color: #fff;
+  border-radius: var(--radius);
 }
 
 /*
@@ -226,6 +242,7 @@ h1 {
   from {
     transform: translateY(100%);
   }
+
   to {
     transform: translateY(0%);
   }
